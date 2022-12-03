@@ -64,7 +64,7 @@ export const SendBtn = ({ value }: SendBtnProps) => {
                     <ArrowDropDownIcon />
                 </StyledSend>
             </ButtonGroup>
-            {/* <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
                     <Grow
                         {...TransitionProps}
@@ -89,7 +89,7 @@ export const SendBtn = ({ value }: SendBtnProps) => {
                         </Paper>
                     </Grow>
                 )}
-            </Popper> */}
+            </Popper>
         </React.Fragment>
     );
 };

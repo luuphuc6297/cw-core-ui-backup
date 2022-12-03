@@ -78,7 +78,8 @@ export const AutoCompleteFiled = ({ name, control, label, disabled, options }: S
                     </Box>
                 )}
                 filterSelectedOptions
-                renderInput={(params: JSX.IntrinsicAttributes & TextFieldProps) => (
+                //@ts-ignore
+                renderInput={(params: any) => (
                     <TextField {...params} label={label} variant="filled" />
                 )}
             />
