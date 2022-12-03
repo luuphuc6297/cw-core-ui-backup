@@ -1,6 +1,6 @@
-import { CurrentUser, UpdateProfile } from '@cw-ui-core/commons';
+import { CurrentUser, UpdateProfile } from 'models';
 import { StateCreator } from 'zustand';
-import { userApis } from '../apis/userApis';
+import { userApis } from 'apis/userApis';
 
 export interface UserSlice {
     user: CurrentUser;

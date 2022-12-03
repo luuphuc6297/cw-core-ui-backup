@@ -1,7 +1,7 @@
-import { ItemResponse, ListResponse, Message, ResponseSocketItem } from '@cw-ui-core/commons';
+import { messageApis } from 'apis/messageApis';
 import { flattenDeep, keyBy, orderBy } from 'lodash';
+import { ItemResponse, ListResponse, Message, ResponseSocketItem } from 'models';
 import { StateCreator } from 'zustand';
-import { messageApis } from '../apis/messageApis';
 
 export interface MessageSlice {
     loading: boolean;
@@ -11,12 +11,7 @@ export interface MessageSlice {
     createMessage: (workspaceId: string, conversationId: string, content: string) => void;
     updateMessagesFromSocket: (data: ResponseSocketItem) => void;
     updatePageNumber: (conversationId: string, pageNumber: number) => void;
-    // updateLastMessageOfConversationInList: (data: IResponseSocketItem) => void;
-    // updateLastMessageOfConversationInListWhenDelete: (
-    //     messageId: string,
-    //     conversationId: string,
-    //     lastMessage: string
-    // ) => void;
+
     clearMessage: () => void;
     deleteMessage: (workspaceId: string, messageId: string) => void;
 }

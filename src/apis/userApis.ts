@@ -1,6 +1,6 @@
-import { CurrentUser, ListResponse, UpdateProfile, ResponseLoginUser, User } from '@cw-ui-core/commons';
-import axiosSSO from './axiosSSO';
-import axiosRTC from './axiosRTC';
+import axiosRTC from 'apis/clients/axiosRTC';
+import axiosSSO from 'apis/clients/axiosSSO';
+import { CurrentUser, ListResponse, ResponseLoginUser, UpdateProfile, User } from 'models';
 
 export const userApis = {
     login(data: User): Promise<ResponseLoginUser> {

@@ -1,5 +1,5 @@
-import { ListResponse, Message } from '@cw-ui-core/commons';
-import axiosRTC from './axiosRTC';
+import { ListResponse, Message } from 'models';
+import axiosRTC from 'apis/clients/axiosRTC';
 
 export const messageApis = {
     getMessages: (workspaceId: string, conversationId: string, pageNumber: number): Promise<ListResponse> => {

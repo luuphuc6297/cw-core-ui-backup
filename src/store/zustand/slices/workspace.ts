@@ -1,4 +1,4 @@
-import { ListResponse, WorkSpace } from '@cw-ui-core/commons';
+import { ListResponse, WorkSpace } from 'models';
 import { StateCreator } from 'zustand';
 
 export interface WorkSpaceSlice {

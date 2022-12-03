@@ -1,14 +1,14 @@
-import {
-  Conversation,
-  CreateConversationForm,
-  ItemResponse,
-  LastMessage,
-  ListResponse,
-  ResponseSocketItem
-} from '@cw-ui-core/commons';
+import { conversationApis } from 'apis/conversationApis';
 import _, { first, isEmpty, keys } from 'lodash';
-import { conversationApis } from '../apis/conversationApis';
-import { getRandomColor } from '@cw-ui-core/commons';
+import {
+    Conversation,
+    CreateConversationForm,
+    ItemResponse,
+    LastMessage,
+    ListResponse,
+    ResponseSocketItem
+} from 'models';
+import { getRandomColor } from 'utils';
 import { StateCreator } from 'zustand';
 
 export interface ConversationSlice {
@@ -131,7 +131,7 @@ export const createConversationSlice: StateCreator<
     links: initLinksConversation,
     serverMessages: initServerMessages,
     setConversations: (conversations: ListResponse) => {
-       set(() => ({ conversations }));
+        set(() => ({ conversations }));
     },
     setConversation: (conversation: Conversation) => {
         set(() => ({ conversation }));

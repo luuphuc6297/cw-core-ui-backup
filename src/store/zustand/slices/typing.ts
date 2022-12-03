@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { AttributesUser } from '@cw-ui-core/commons';
+import { AttributesUser } from 'models';
 import { StateCreator } from 'zustand';
 
 export interface TypingSlice {

@@ -1,7 +1,5 @@
-import { ListResponse, PresignedUrlConversation } from '@cw-ui-core/commons';
-import axios from 'axios';
-import { Buffer } from 'buffer';
-import axiosRTC from './axiosRTC';
+import axiosRTC from 'apis/clients/axiosRTC';
+import { ListResponse, PresignedUrlConversation } from 'models';
 
 export const uploadApis = {
     getListUser: (workspaceId: string): Promise<ListResponse> => {

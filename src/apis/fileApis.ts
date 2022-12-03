@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { getToken } from '@cw-ui-core/commons';
+import axiosRTC from 'apis/clients/axiosRTC';
+import axiosSSO from 'apis/clients/axiosSSO';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import axiosRTC from './axiosRTC';
-import axiosSSO from './axiosSSO';
+import { getToken } from 'utils';
 
 const axiosFileClient = axios.create({
     baseURL: 'https://files.coachingworkspace.com',
