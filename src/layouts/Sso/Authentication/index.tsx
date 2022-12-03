@@ -8,10 +8,13 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
     return (
-        <AuthenProvider>
+        // <AuthenProvider>
+        <>
             {children}
             <Outlet />
-        </AuthenProvider>
+        </>
+
+        // </AuthenProvider>
     );
 };
 

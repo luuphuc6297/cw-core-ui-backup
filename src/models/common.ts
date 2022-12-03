@@ -28,10 +28,15 @@ export interface ItemResponse {
 
 export interface ListResponse {
     meta: MetaParams;
-    data: ItemResponse[] & Message[];
+    data: ItemResponse[] & Message[] | any[];
 }
 
 export interface ItemFormat {
     fullDate: string;
     fullTime: string;
+}
+
+export interface IListResponse<T> {
+    data: T[];
+    meta: MetaParams
 }

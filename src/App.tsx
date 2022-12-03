@@ -23,7 +23,6 @@ const queryClient = new QueryClient({
 
 const App = () => {
     const { i18n } = useTranslation();
-
     return (
         <React.Fragment>
             <Provider store={store}>

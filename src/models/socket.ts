@@ -38,6 +38,7 @@ export interface IAttributesTyping {
 }
 
 export interface ServerToClientEvents {
+    RESPONSE_JOIN_CONVERSATION: (data: any) => void
     REQUEST_JOIN_CONVERSATIONS: (data: ConfigsSocketEvent) => void;
     RESPONSE_CREATE_MESSAGE: (data: ResponseSocketItem) => void;
     RESPONSE_STOP_TYPING: (data: IResponseSocket) => void;
