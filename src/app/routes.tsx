@@ -1,9 +1,13 @@
 import { CircularIndeterminate } from 'components';
 import AuthLayout from 'layouts/Sso/Authentication';
-import React from 'react';
-import { Suspense } from 'react';
-import { RouteObject, useRoutes, Outlet } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Outlet, RouteObject, useRoutes } from 'react-router-dom';
 
+const LoginContainer = React.lazy(() => import('containers/Sso/Login'));
+const RegisterContainer = React.lazy(() => import('containers/Sso/Register'));
+/**
+ * Dashboard routes
+ */
 const RtcContainer = React.lazy(() => import('containers/Home/Rtc'));
 
 const Router = () => {
@@ -16,8 +20,16 @@ const Router = () => {
                     path: 'login',
                     element: (
                         <Suspense fallback={<CircularIndeterminate />}>
-                            <div>Login</div>
+                            <LoginContainer />
                         </Suspense>
+                    ),
+                },
+                {
+                    path: 'register',
+                    element: (
+                        <React.Suspense fallback={<CircularIndeterminate />}>
+                            <RegisterContainer />
+                        </React.Suspense>
                     ),
                 },
                 {

@@ -9,7 +9,11 @@ const RtcContainer = () => {
         socketRtc.emit('REQUEST_JOIN_CONVERSATIONS', { headers: { Authorization: token } });
     }, [token]);
 
-    return <RTCSocketProvider token={token}></RTCSocketProvider>;
+    return (
+        <RTCSocketProvider token={token}>
+            <div>this rtc</div>
+        </RTCSocketProvider>
+    );
 };
 
 export default RtcContainer;
