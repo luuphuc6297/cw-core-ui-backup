@@ -1,3 +1,4 @@
+import { authApis } from 'apis/authApis';
 import { setupPasswordActions } from 'features/slices/sso/setupPasswordSlice';
 import { SetupPassword } from 'models';
 import { SetupPasswordPage } from 'pages';
@@ -14,9 +15,9 @@ const SetupPasswordContainer = () => {
 
     const handleSetupPassword = async (formValues: SetupPassword) => {
         try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore
-            await dispatch(setupPasswordActions.confirmPassword({ formValues, navigate }));
+            const response = await authApis.setupPassword(formValues);
+
+            // await dispatch(setupPasswordActions.confirmPassword({ formValues, navigate }));
         } catch (error) {
             console.log('error', error);
         }

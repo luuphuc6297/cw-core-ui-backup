@@ -6,6 +6,8 @@ import { Conversation, IListResponse, MetaParams } from 'models';
 const conversationKey = {
     all: () => ['conversationServices'] as const,
     conversations: (params: MetaParams) => [conversationKey.all(), 'conversations', params] as const,
+    conversation: (workspaceId: string, conversationId: string) =>
+        [conversationKey.all(), 'conversation', { workspaceId, conversationId }] as const,
 };
 
 export const useConversationList = (
@@ -39,6 +41,30 @@ export const useConversationList = (
         conversations: data,
         hasMore,
         isLoadingPage,
+        ...result,
+    };
+};
+
+export const useConversation = (
+    workspaceId: string,
+    conversationId: string,
+    config: UseQueryOptions<
+        Conversation,
+        AxiosError,
+        Conversation,
+        InferQueryKey<typeof conversationKey.conversation>
+    > = {}
+) => {
+    const result = useQuery(
+        conversationKey.conversation(workspaceId, conversationId),
+        () => conversationApis.getConversationDetail(workspaceId, conversationId),
+        {
+            ...config,
+        }
+    );
+
+    return {
+        conversation: result.data,
         ...result,
     };
 };

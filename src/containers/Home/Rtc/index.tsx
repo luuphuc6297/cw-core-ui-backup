@@ -1,6 +1,7 @@
 import { RTCSocketProvider, socketRtc } from 'providers/Home/Rtc/Socket';
 import React from 'react';
 import { getTokenAuth } from 'utils';
+import GetPayload from './GetPayload';
 
 const RtcContainer = () => {
     const token = getTokenAuth();
@@ -11,7 +12,7 @@ const RtcContainer = () => {
 
     return (
         <RTCSocketProvider token={token}>
-            <div>this rtc</div>
+            <GetPayload />
         </RTCSocketProvider>
     );
 };

@@ -62,7 +62,7 @@ const RegisterPage = ({ initialValues, onSubmit, apiError }: SignUpProps) => {
     };
 
     const onRedirect = React.useCallback(() => {
-        navigate('/sso/login');
+        navigate('/login');
     }, []);
 
     return (

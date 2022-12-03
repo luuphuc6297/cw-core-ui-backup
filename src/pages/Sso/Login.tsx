@@ -50,8 +50,9 @@ const StyledLinkedinIcon = styled('img')(({ theme }) => ({
 }));
 
 const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
-    const apiError = useSelector(selectError);
     const [showPassword, setShowPassword] = React.useState<boolean>(false);
+
+    const apiError = useSelector(selectError);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -73,8 +74,6 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
         event.preventDefault();
     };
 
-    // React.useEffect(() => {}, [apiError]);
-
     React.useEffect(() => {
         dispatch(authActions.clearError());
     }, []);
@@ -94,12 +93,7 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
     }, []);
 
     return (
-        <SSO
-            title="Hi, welcome back"
-            onRedirect={onRedirect}
-            headerText="Don’t have an account?"
-            redirectBtn="Sign Up"
-        >
+        <SSO title="Hi, welcome back" onRedirect={onRedirect} headerText="Don’t have an account?" redirectBtn="Sign Up">
             <>
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <Box
