@@ -1,36 +1,36 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ImageIcon from '@mui/icons-material/Image';
 import {
-    List,
-    ListItem,
-    ListItemText,
+    Button,
     Collapse,
-    ListItemIcon,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
-    Button,
-    TextField,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    TextField
 } from '@mui/material';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import EditIcon from '@mui/icons-material/Edit';
-import ImageIcon from '@mui/icons-material/Image';
+import React from 'react';
 import { timeout } from 'utils';
 
 interface IInspectorOptionsProps {
     conversationId: string;
-    uploadAvatar: (e: any) => void;
-    handleChange: (value: string, conversationId: string) => void;
     title: string;
+    handleChange: (value: string, conversationId: string) => void;
 }
 
-export const InspectorOptions = ({ conversationId, title, handleChange, uploadAvatar }: IInspectorOptionsProps) => {
+export const InspectorOptions = ({ conversationId, title, handleChange }: IInspectorOptionsProps) => {
     const [open, setOpen] = React.useState(false);
-    const handleClick = () => setOpen(!open);
     const [openDialog, setOpenDialog] = React.useState(false);
     const [hidden, setHidden] = React.useState<boolean>(true);
+
+    const handleClick = () => setOpen(!open);
+
     const handleOpenDialog = async () => {
         setOpenDialog(true);
         const el = document.getElementById('setting-universal');
@@ -41,6 +41,7 @@ export const InspectorOptions = ({ conversationId, title, handleChange, uploadAv
         const dialogChangeTitle: any = document.getElementById('dialog-change-title');
         settings.appendChild(dialogChangeTitle);
     };
+
     const handleClose = () => {
         setHidden(true);
         const el = document.getElementById('dialog-change-title');

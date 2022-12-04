@@ -1,4 +1,5 @@
 import { Box, styled } from '@mui/system';
+import { values } from 'lodash';
 import { useRef } from 'react';
 import { CustomizedAvatar } from '../CustomizedAvatar';
 
@@ -35,23 +36,19 @@ const AvatarUpload = ({
     avatarUrl,
     firstName,
     lastName,
-    handleUploadAvt,
-    handleUpdateAvt,
 }: ConversationAvatarProps) => {
     const elUploadImage = useRef<any>();
 
-    // const handleUpdateAvt = () => {
-    //     elUploadImage.current.click();
-    // };
+    const handleUpdateAvt = () => {
+        elUploadImage.current.click();
+    };
 
-    // const handleUploadAvt = (e: any) => {
-    //     const files = values(e.target.files);
-    //     const fileUpload = files[0];
-    //     const formData = new FormData();
-    //     formData.append('file', fileUpload);
-
-    //     console.log(fileUpload, 'fileUpload');
-    // };
+    const handleUploadAvt = (e: any) => {
+        const files = values(e.target.files);
+        const fileUpload = files[0];
+        const formData = new FormData();
+        formData.append('file', fileUpload);
+    };
 
     return (
         <StyledWrapperAvatar onClick={handleUpdateAvt}>

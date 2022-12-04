@@ -12,6 +12,6 @@ const GetPayload = () => {
 
     React.useEffect(() => {}, []);
 
-    return <></>;
+    return <React.Fragment />;
 };
 export default GetPayload;

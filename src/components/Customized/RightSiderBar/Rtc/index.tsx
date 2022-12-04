@@ -3,13 +3,16 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Box, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { MainLayoutContext } from 'layouts';
-import { get } from 'lodash';
+import { get, values } from 'lodash';
 import { Conversation, ListResponse } from 'models';
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useConversation, useConversationUpdate } from 'services';
 import AvatarUpload from '../../ConversationAvatar';
 import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
 
+const workspaceId = '38647fbd-20a8-40ab-8292-b4828d636d29';
 interface RightSidebarRtcProps {
     conversation: Conversation;
     handleChangeTitle: (value: string, conversationId: string) => void;
@@ -40,21 +43,35 @@ const StyledInfoUser = styled(Box)(({ theme }) => ({
     },
 }));
 
-export const RightSidebarRtc = ({
-    conversation,
-    handleChangeTitle,
-    uploadAvatar,
-    usersConversation,
-    users,
-    onAddMember,
-}: RightSidebarRtcProps) => {
+export const RightSidebarRtc = ({ usersConversation, users, onAddMember }: RightSidebarRtcProps) => {
+    const { conversationId }: string | any = useParams();
+    const { conversation }: any = useConversation('', conversationId, { refetchOnWindowFocus: false });
+
+    const navigate = useNavigate();
+    const { setIsShowRightSidebar } = React.useContext(MainLayoutContext);
+
     const leaveGroup = () => {
         console.log('handle leave group');
     };
 
     const { title: titleChat = '', imagePath: avatarUrl = '' } = get(conversation, 'attributes', {} as any);
 
-    const { setIsShowRightSidebar } = React.useContext(MainLayoutContext);
+    const { mutate: editConversation } = useConversationUpdate({
+        onSuccess: () => {
+            console.log('success');
+            navigate(-1);
+        },
+    });
+
+    const handleChangeTitle = async (customTitle: string) => {
+        const data = { title: customTitle };
+
+        editConversation({
+            workspaceId,
+            conversationId,
+            payload: data,
+        } as any);
+    };
 
     return (
         <>
@@ -69,10 +86,7 @@ export const RightSidebarRtc = ({
 
             <StyledInfoUser>
                 <Box sx={{ margin: '0 auto' }}>
-                    <AvatarUpload
-                        {...{ avatarUrl, firstName: titleChat, lastName: '' }}
-                        handleUploadAvt={uploadAvatar}
-                    />
+                    <AvatarUpload {...{ avatarUrl, firstName: titleChat, lastName: '' }} />
                 </Box>
                 <Typography
                     sx={{ fontWeight: 650, padding: '0 16px', textAlign: 'center' }}
@@ -84,12 +98,7 @@ export const RightSidebarRtc = ({
             </StyledInfoUser>
 
             <Divider />
-            <InspectorOptions
-                conversationId={conversation._id}
-                title={titleChat}
-                handleChange={handleChangeTitle}
-                uploadAvatar={uploadAvatar}
-            />
+            <InspectorOptions conversationId={conversation._id} title={titleChat} handleChange={handleChangeTitle} />
             <Divider />
             <UsersConversationWrapper
                 conversation={conversation}

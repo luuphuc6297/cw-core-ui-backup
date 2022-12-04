@@ -20,9 +20,11 @@ import { isEmpty } from 'lodash';
 import { Conversation, CreateConversationForm, ListResponse, WorkspaceUser } from 'models';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
+import { WORKSPACE_ID } from 'utils';
 import { InviteUserSchema } from '../CreateConversation/validation';
 import { UsersConversationUI } from './UsersConversationUI';
-
 interface UserConversationWrapperProps {
     usersConversation: ListResponse;
     conversation: Conversation;
@@ -36,18 +38,18 @@ const StyledBox = styled(Box)(({ theme }) => ({
     width: '100%',
 }));
 
-export const UsersConversationWrapper = ({
-    usersConversation,
-    conversation,
-    users,
-    onAddMember,
-}: UserConversationWrapperProps) => {
+export const UsersConversationWrapper = ({ usersConversation, conversation, users }: UserConversationWrapperProps) => {
     const [open, setOpen] = React.useState<boolean>(false);
     const [openDialog, setOpenDialog] = React.useState<boolean>(false);
     const [options, setOptions] = React.useState<MemberOptionType[]>([]);
 
     const userIds = usersConversation.data.map((i) => i._id);
     const initialValues: CreateConversationForm = { title: '' } as CreateConversationForm;
+
+    const { getDataMessages } = useRtcStore((state: MessageSlice) => state);
+    const { getConversationDetail, inviteUsers, getUsersConversation } = useRtcStore(
+        (state: ConversationSlice) => state
+    );
 
     const {
         control,
@@ -59,6 +61,19 @@ export const UsersConversationWrapper = ({
         defaultValues: initialValues,
         resolver: yupResolver(InviteUserSchema),
     });
+
+    const onAddMember = (selectedId: string[]) => {
+        try {
+            inviteUsers(WORKSPACE_ID, conversation._id, selectedId);
+            getConversationDetail(WORKSPACE_ID, conversation._id);
+            getUsersConversation(WORKSPACE_ID, conversation._id);
+            getDataMessages(WORKSPACE_ID, conversation._id, 1);
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    };
 
     const handleFormSubmit = async (formValues: CreateConversationForm) => {
         const addSuccess = onAddMember(formValues.selectedId);
@@ -98,10 +113,11 @@ export const UsersConversationWrapper = ({
     };
 
     const handleOpenDialog = () => setOpenDialog(true);
+
     const handleClose = () => {
         setOpenDialog(false);
     };
-    console.log('user in conversation', usersConversation);
+
     return (
         <List component="nav" aria-labelledby="list-users">
             <ListItem button onClick={handleClick}>
