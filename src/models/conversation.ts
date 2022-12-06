@@ -23,6 +23,12 @@ export interface Conversation {
     meta: Meta;
 }
 
+export interface ReqUpdateConversation {
+    workspaceId: string;
+    conversationId: string;
+    body: any;
+}
+
 export interface IDataConversationDetail {
     [id: string]: ItemResponse;
 }

@@ -56,21 +56,21 @@ export const RightSidebarRtc = ({ usersConversation, users, onAddMember }: Right
 
     const { title: titleChat = '', imagePath: avatarUrl = '' } = get(conversation, 'attributes', {} as any);
 
-    const { mutate: editConversation } = useConversationUpdate({
-        onSuccess: () => {
-            console.log('success');
-            navigate(-1);
-        },
-    });
+    // const { mutate: editConversation } = useConversationUpdate({
+    //     onSuccess: () => {
+    //         console.log('success');
+    //         navigate(-1);
+    //     },
+    // });
 
     const handleChangeTitle = async (customTitle: string) => {
         const data = { title: customTitle };
 
-        editConversation({
-            workspaceId,
-            conversationId,
-            payload: data,
-        } as any);
+        // editConversation({
+        //     workspaceId,
+        //     conversationId,
+        //     payload: data,
+        // } as any);
     };
 
     return (

@@ -37,7 +37,7 @@ const Router = () => {
                     element: <Outlet />,
                     children: [
                         {
-                            path: 'rtc/:conversationId',
+                            path: '',
                             element: (
                                 <Suspense fallback={<CircularIndeterminate />}>
                                     <RtcContainer />

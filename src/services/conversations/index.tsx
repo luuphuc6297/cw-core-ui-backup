@@ -1,4 +1,5 @@
 import { useMutation, UseMutationOptions, useQuery, useQueryClient, UseQueryOptions } from '@tanstack/react-query';
+import axiosRTC from 'apis/clients/axiosRTC';
 import { conversationApis } from 'apis/conversationApis';
 import { AxiosError } from 'axios';
 import { Conversation, IListResponse, MetaParams } from 'models';
@@ -75,14 +76,12 @@ export const useConversation = (
 };
 
 export const useConversationUpdate = (
+    workspaceId: string,
     config: UseMutationOptions<Conversation, AxiosError<ConversationMutateError>, Conversation> = {}
 ) => {
     const queryClient = useQueryClient();
 
-    return useMutation(
-        ({ workspaceId, conversationId, payload }: any) =>
-            conversationApis.updateConversation(workspaceId, conversationId, payload),
-        {
+    return useMutation((payload) => axiosRTC.patch(`/${workspaceId}/api/conversations/${payload._id}`, {title: payload.attributes.title}), {
             ...config,
             onSuccess: (data, payload, ...rest) => {
                 queryClient.cancelQueries([...conversationKey.all(), 'conversations']);
