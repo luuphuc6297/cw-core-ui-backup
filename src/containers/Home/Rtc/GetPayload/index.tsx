@@ -1,5 +1,5 @@
 import React from 'react';
-import { useConversationList, useConversationUpdate } from 'services';
+import { useConversationList, useConversationUpdate, useMessageList, useMessageUpdate } from 'services';
 
 const GetPayload = () => {
     const { conversations } = useConversationList('38647fbd-20a8-40ab-8292-b4828d636d29', {
@@ -10,6 +10,25 @@ const GetPayload = () => {
         skip: 0,
     });
 
+    const { messages } = useMessageList(
+        '38647fbd-20a8-40ab-8292-b4828d636d29', 
+        "9e27a779-b4cc-418c-acb7-03767c941b4c", {
+        page: 1,
+        limit: 10,
+        count: 0,
+        totalPages: 0,
+        skip: 0,
+    });
+
+    const { mutate: messageUpdate, ...messageUpdateData } = useMessageUpdate('38647fbd-20a8-40ab-8292-b4828d636d29', {
+        onSuccess: (data, login) => {
+          console.log(data);
+        },
+        onError: (_, error) => {
+          console.log(error);
+        },
+    });
+
     const { mutate: conversationUpdate, ...conversationUpdateData } = useConversationUpdate('38647fbd-20a8-40ab-8292-b4828d636d29', {
         onSuccess: (data, login) => {
           console.log(data);
@@ -18,7 +37,7 @@ const GetPayload = () => {
           console.log(error);
         },
     });
-    console.log("IN");
+
     const updateConversation = () => conversationUpdate({
         "_id": "9e27a779-b4cc-418c-acb7-03767c941b4c",
         "attributes": {
@@ -70,12 +89,30 @@ const GetPayload = () => {
         
     });
 
+    const updateMessage = () => messageUpdate({
+        "_id": "48302f18-6438-4737-8ca4-40ca1b33433b",
+        "type": "Message",
+        "attributes": {
+            "contentType": "Text",
+            "generator": "Server",
+            "_id": "48302f18-6438-4737-8ca4-40ca1b33433b",
+            "conversationId": "9e27a779-b4cc-418c-acb7-03767c941b4c",
+            "content": "Phuc Dinh updated the conversation"
+        },
+        "meta": {
+            "createdAt": "2022-12-07T13:21:05.062Z",
+            "updatedAt": "2022-12-07T13:21:05.062Z",
+            "respondedAt": "2022-12-07T13:42:02.985Z"
+        },
+        content: "hello"
+    },)
+
     React.useEffect(() => {
 
     }, []);
 
     return <React.Fragment>
-        <button onClick={updateConversation}>update</button>
+        <button onClick={updateMessage}>update</button>
     </React.Fragment>;
 };
 export default GetPayload;

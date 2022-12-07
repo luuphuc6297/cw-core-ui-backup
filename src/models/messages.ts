@@ -25,4 +25,5 @@ export interface Message {
     meta: Meta;
     type: string;
     _id: string;
+    content?: string;
 }
