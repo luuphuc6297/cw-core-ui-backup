@@ -44,6 +44,14 @@ const Router = () => {
                                 </Suspense>
                             ),
                         },
+                        {
+                            path: ':id',
+                            element: (
+                                <Suspense fallback={<CircularIndeterminate />}>
+                                    <RtcContainer />
+                                </Suspense>
+                            ),
+                        },
                     ],
                 },
             ],

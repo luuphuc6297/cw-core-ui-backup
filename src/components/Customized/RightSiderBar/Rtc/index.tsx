@@ -8,6 +8,8 @@ import { get } from 'lodash';
 import { ListResponse } from 'models';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
 import AvatarUpload from '../../ConversationAvatar';
 import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
@@ -34,11 +36,14 @@ const StyledInfoUser = styled(Box)(({ theme }) => ({
 }));
 
 export const RightSidebarRtc = () => {
-    const conversation = DATA_FAKE.conversation;
 
-    const users: any | ListResponse = DATA_FAKE.users;
-
-    const usersConversation: ListResponse = DATA_FAKE.usersConversation;
+    const {
+        conversation,
+        usersConversation,
+    } = useRtcStore((state: ConversationSlice) => state);
+    const {
+        users,
+    } = useRtcStore((state: WorkSpaceSlice) => state);
 
     const { setIsShowRightSidebar } = React.useContext(MainLayoutContext);
 

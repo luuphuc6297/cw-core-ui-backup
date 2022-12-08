@@ -2,7 +2,7 @@ import { useMutation, UseMutationOptions, useQuery, useQueryClient, UseQueryOpti
 import axiosRTC from 'apis/clients/axiosRTC';
 import { conversationApis } from 'apis/conversationApis';
 import { AxiosError } from 'axios';
-import { Conversation, IListResponse, MetaParams } from 'models';
+import { Conversation, ListResponse, MetaParams } from 'models';
 
 type ConversationMutateError = {
     title: string;
@@ -20,9 +20,9 @@ export const useConversationList = (
     workspaceId: string,
     params: MetaParams,
     config: UseQueryOptions<
-        IListResponse<Conversation>,
+        ListResponse,
         AxiosError,
-        IListResponse<Conversation>,
+        ListResponse,
         InferQueryKey<typeof conversationKey.conversations>
     > = {}
 ) => {
@@ -37,9 +37,9 @@ export const useConversationList = (
 
     const { data, meta } = result.data || {};
 
-    const totalPages = Math.ceil((meta?._totalRows ?? 0) / params?._limit);
+    const totalPages = Math.ceil((meta?.count ?? 0) / params?.limit);
 
-    const hasMore = params?._page + 1 < totalPages;
+    const hasMore = params?.page + 1 < totalPages;
 
     const isLoadingPage = result.isFetching;
 
@@ -89,7 +89,7 @@ export const useConversationUpdate = (
                     .getQueryCache()
                     .findAll([...conversationKey.all(), 'conversations'])
                     .forEach(({ queryKey }) => {
-                        queryClient.setQueryData<IListResponse<Conversation> | undefined>(queryKey, (cachedData) => {
+                        queryClient.setQueryData<ListResponse | undefined>(queryKey, (cachedData) => {
                             if (!cachedData) return;
                             return {
                                 ...cachedData,

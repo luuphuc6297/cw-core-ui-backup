@@ -39,7 +39,6 @@ export const ListConversations = ({ conversations, onClick }: ListConversationsP
                                     key={conversation._id}
                                     conversation={conversation}
                                     handleListItemClick={(idConversation) => {
-                                        console.log(`/rtc/${idConversation}`);
                                         onClick(conversation);
                                     }}
                                 />

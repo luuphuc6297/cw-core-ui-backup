@@ -1,7 +1,10 @@
 import { List, OutlinedInput } from '@mui/material';
 import { Box, styled } from '@mui/system';
-import { DATA_FAKE } from 'containers/Home/Rtc/data';
-import { Conversation, ListResponse } from 'models';
+import { Conversation } from 'models';
+import { useNavigate } from 'react-router-dom';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { WORKSPACE_ID } from 'utils';
 import { CreateConversationArea } from './CreateConversationArea';
 import { ListConversations } from './ListConversations';
 
@@ -15,15 +18,31 @@ const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
 }));
 
 export const LeftSidebarRtc = ({ onClickSearch }: any) => {
+
+    const navigate = useNavigate();
+
+    const {
+        conversations,
+        setConversation,
+        getUsersConversation,
+    } = useRtcStore((state: ConversationSlice) => state);
+    const {
+        users,
+    } = useRtcStore((state: WorkSpaceSlice) => state);
+    const {
+        getDataMessages,
+    } = useRtcStore((state: MessageSlice) => state);
+
     const onClick = (conversation: Conversation) => {
-        // Handle logic in here
+        setConversation(conversation);
+        getDataMessages(WORKSPACE_ID, conversation._id, 1);
+        getUsersConversation(WORKSPACE_ID, conversation._id);
+        navigate(`/rtc/${conversation._id}`);
     };
+
     const onSubmit = async (formValues: any, onCancel: any) => {
         // Handle logic in here
     };
-
-    const conversations: any = DATA_FAKE.conversations.data;
-    const users: any | ListResponse = DATA_FAKE.users;
 
     return (
         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -40,7 +59,7 @@ export const LeftSidebarRtc = ({ onClickSearch }: any) => {
                 <CreateConversationArea onSubmit={onSubmit} users={users} />
             </Box>
             <List sx={{ height: '100%', overflowY: 'auto' }}>
-                <ListConversations conversations={conversations} onClick={onClick} />
+                <ListConversations conversations={conversations.data} onClick={onClick} />
             </List>
         </Box>
     );

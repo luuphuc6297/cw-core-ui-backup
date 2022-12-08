@@ -5,6 +5,9 @@ export interface WorkSpaceSlice {
     workspaces: WorkSpace[];
     workspace: WorkSpace;
     users: ListResponse;
+    storeWorkSpaces: (data: WorkSpace[]) => void;
+    storeWorkSpace: (data: WorkSpace) => void;
+    setUsers: (result: ListResponse) => void;
 }
 
 const initUsers: ListResponse = {
@@ -42,7 +45,7 @@ export const createWorkSpaceSlice: StateCreator<WorkSpaceSlice, [], [], WorkSpac
     storeWorkSpace: (data: WorkSpace) => {
         set({ workspace: data });
     },
-    setUsers: async (result: ListResponse) => {
+    setUsers: (result: ListResponse) => {
         set({ users: result });
     },
     // getWorkSpaceDetail: async (workSpaceId: string) => {

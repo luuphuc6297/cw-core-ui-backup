@@ -1,26 +1,39 @@
 import React from 'react';
 import { useConversationList, useConversationUpdate, useMessageList, useMessageUpdate } from 'services';
+import { useUserList } from 'services/users';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { WORKSPACE_ID } from 'utils';
 
 const GetPayload = () => {
-    const { conversations } = useConversationList('38647fbd-20a8-40ab-8292-b4828d636d29', {
-        page: 1,
-        limit: 10,
+    
+    const {
+        setConversations,
+    } = useRtcStore((state: ConversationSlice) => state);
+
+    const {
+        setUsers,
+    } = useRtcStore((state: WorkSpaceSlice) => state);
+
+    const { data: conversations } = useConversationList(WORKSPACE_ID, {
+        limit: 30,
         count: 0,
-        totalPages: 0,
+        totalPages: 1,
         skip: 0,
     });
 
-    const { messages } = useMessageList(
-        '38647fbd-20a8-40ab-8292-b4828d636d29', 
-        "9e27a779-b4cc-418c-acb7-03767c941b4c", {
-        page: 1,
-        limit: 10,
-        count: 0,
-        totalPages: 0,
-        skip: 0,
-    });
+    const { data: users } = useUserList(WORKSPACE_ID);
 
-    const { mutate: messageUpdate, ...messageUpdateData } = useMessageUpdate('38647fbd-20a8-40ab-8292-b4828d636d29', {
+    // const { messages } = useMessageList(
+    //     WORKSPACE_ID, 
+    //     "9e27a779-b4cc-418c-acb7-03767c941b4c", {
+    //     limit: 30,
+    //     count: 0,
+    //     totalPages: 1,
+    //     skip: 0,
+    // });
+
+    const { mutate: messageUpdate, ...messageUpdateData } = useMessageUpdate(WORKSPACE_ID, {
         onSuccess: (data, login) => {
           console.log(data);
         },
@@ -29,7 +42,7 @@ const GetPayload = () => {
         },
     });
 
-    const { mutate: conversationUpdate, ...conversationUpdateData } = useConversationUpdate('38647fbd-20a8-40ab-8292-b4828d636d29', {
+    const { mutate: conversationUpdate, ...conversationUpdateData } = useConversationUpdate(WORKSPACE_ID, {
         onSuccess: (data, login) => {
           console.log(data);
         },
@@ -108,11 +121,12 @@ const GetPayload = () => {
     },)
 
     React.useEffect(() => {
-
+        if (conversations) setConversations(conversations);
+        if (users) setUsers(users);
     }, []);
 
     return <React.Fragment>
-        <button onClick={updateMessage}>update</button>
+        {/* <button onClick={updateMessage}>update</button> */}
     </React.Fragment>;
 };
 export default GetPayload;

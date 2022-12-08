@@ -3,6 +3,8 @@ import { styled } from '@mui/system';
 import { ConversationsTitle, LoadMoreMessages, MessagesArea, SenderArea } from 'components';
 import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import React from 'react';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
 import { formatDistance } from 'utils';
 
 // interface ChattingProps {
@@ -35,7 +37,13 @@ const StyledTitleChat = styled(Box)(({ theme }) => ({
 }));
 
 export const Chatting = () => {
-    const conversation = DATA_FAKE.conversation;
+
+    const {
+        conversation,
+    } = useRtcStore((state: ConversationSlice) => state);
+    const {
+        messages,
+    } = useRtcStore((state: MessageSlice) => state);
 
     React.useEffect(() => {
         const elmContent: any = document.getElementById(`scrollable-box`);
@@ -58,7 +66,7 @@ export const Chatting = () => {
             </StyledTitleChat>
             <MessagesArea>
                 <LoadMoreMessages
-                    messages={DATA_FAKE.messages}
+                    messages={messages}
                     currentUser={DATA_FAKE.user}
                     typing={[]}
                     loadMessages={loadMessages}
