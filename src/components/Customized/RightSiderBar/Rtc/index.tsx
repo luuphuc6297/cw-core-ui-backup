@@ -2,14 +2,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Box, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import { MainLayoutContext } from 'layouts';
 import { get } from 'lodash';
-import { ListResponse } from 'models';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useConversationUpdate } from 'services';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { WORKSPACE_ID } from 'utils';
 import AvatarUpload from '../../ConversationAvatar';
 import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
@@ -40,10 +39,16 @@ export const RightSidebarRtc = () => {
     const {
         conversation,
         usersConversation,
+        inviteUsers,
+        getConversationDetail,
+        getUsersConversation,
     } = useRtcStore((state: ConversationSlice) => state);
     const {
         users,
     } = useRtcStore((state: WorkSpaceSlice) => state);
+    const {
+        getDataMessages,
+    } = useRtcStore((state: MessageSlice) => state);
 
     const { setIsShowRightSidebar } = React.useContext(MainLayoutContext);
 
@@ -53,25 +58,27 @@ export const RightSidebarRtc = () => {
 
     const { title: titleChat = '', imagePath: avatarUrl = '' } = get(conversation, 'attributes', {} as any);
 
-    // const { mutate: editConversation } = useConversationUpdate({
-    //     onSuccess: () => {
-    //         console.log('success');
-    //         navigate(-1);
-    //     },
-    // });
+    const { mutate: conversationUpdate } = useConversationUpdate(WORKSPACE_ID, {
+        onSuccess: (data, login) => {
+          console.log(data);
+        },
+        onError: (_, error) => {
+          console.log(error);
+        },
+    });
 
     const handleChangeTitle = async (customTitle: string) => {
-        const data = { title: customTitle };
-
-        // editConversation({
-        //     workspaceId,
-        //     conversationId,
-        //     payload: data,
-        // } as any);
+        const data = { ...conversation };
+        data.attributes.title = customTitle;
+        conversationUpdate(data);
     };
 
     const onAddMember = (selectedId: string[]) => {
-        return false;
+        inviteUsers(WORKSPACE_ID, conversation._id, selectedId);
+        getConversationDetail(WORKSPACE_ID, conversation._id);
+        getUsersConversation(WORKSPACE_ID, conversation._id);
+        getDataMessages(WORKSPACE_ID, conversation._id, 1);
+        return true;
     };
 
     return (

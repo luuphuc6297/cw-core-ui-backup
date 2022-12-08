@@ -10,8 +10,6 @@ interface UsersConversationUIProps {
 export const UsersConversationUI = ({ usersConversation, conversation }: UsersConversationUIProps) => {
     const userId = conversation.attributes.user['_id'];
 
-    console.log('current conversation', conversation);
-
     return (
         <List component="div" disablePadding>
             {usersConversation.data.map((el: any, index: number) => {

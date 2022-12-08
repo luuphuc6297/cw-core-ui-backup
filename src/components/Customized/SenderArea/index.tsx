@@ -1,9 +1,14 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
+import { messageApis } from 'apis/messageApis';
 import { AttachBtn, SaveEditingBtn, SenderIconBtn } from 'components';
+import { debounce, get, trim } from 'lodash';
+import { Conversation } from 'models';
 import React from 'react';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
 
-import { CLIENT_EVENT } from 'utils';
+import { CLIENT_EVENT, WORKSPACE_ID } from 'utils';
 import { TinyMCE } from '../TinyMCE';
 
 // interface SenderAreaProps {
@@ -32,16 +37,146 @@ export const SenderArea = () => {
     const [countLengthValue, setCountLengthValue] = React.useState<number>(0);
     const [editing, setEditing] = React.useState(false);
     const [valueEditor, setValueEditor] = React.useState<string>('');
+    const [isStarting, setIsStarting] = React.useState<boolean>(false);
+    const [idMess, setIdMess] = React.useState<string>('');
+    
+    const {
+        conversation,
+    } = useRtcStore((state: ConversationSlice) => state);
+    const {
+        messages,
+        getDataMessages,
+        createMessage,
+        updatePageNumber,
+        deleteMessage,
+        updateMessagesFromSocket,
+    } = useRtcStore((state: MessageSlice) => state);
 
-    const sendMessage = () => {
-        //Handle logic here
+    const pageNumber = messages.meta.skip / messages.meta.limit;
+
+    /* handle message */
+    const loadMessages = () => {
+        if (messages.data.length >= 30) {
+            const newPageNumber = pageNumber + 1;
+            const allPromise = Promise.all([
+                getDataMessages(WORKSPACE_ID, conversation._id, newPageNumber),
+                updatePageNumber(conversation._id, newPageNumber),
+            ]);
+            (async () => {
+                await allPromise;
+            })();
+        }
     };
 
-    const onCancelEditMessage = () => {};
+    const sendMessage = (messText: string) => {
+        const drafMess: any = JSON.parse(window.localStorage.getItem('draftMessage') || '{}');
+        delete drafMess[conversation._id];
+        window.localStorage.setItem('draftMessage', JSON.stringify(drafMess));
+        createMessage(WORKSPACE_ID, conversation._id, trim(messText));
+    };
 
-    const onSaveEditMessage = async (id?: string, content?: string) => {};
+    const execute = async (value: string, conversation: Conversation) => {
+        messageApis.stopTyping(WORKSPACE_ID, conversation._id).then();
+        const drafMess: any = JSON.parse(window.localStorage.getItem('draftMessage') || '{}');
+        drafMess[conversation._id] = value;
+        window.localStorage.setItem('draftMessage', JSON.stringify(drafMess));
+        setIsStarting(false);
+    };
 
-    const handleInit = (evt: any, editor: any) => {};
+    const handler = React.useCallback(debounce(execute, 300), []);
+
+    const handleChange = (data: any) => {
+        const { value, editor } = data.detail;
+        const content = editor.getContent({ format: 'text' });
+        setValueEditor(value);
+        setCountLengthValue(content.length);
+        if (!isStarting) {
+            setIsStarting(true);
+            messageApis.startTyping(WORKSPACE_ID, conversation._id).then();
+        }
+        handler(content, conversation);
+        editor.selection.select(editor.getBody(), true);
+        editor.selection.collapse(false);
+        editor.focus();
+    };
+
+    const handleSendMessage = async () => {
+        if (valueEditor) {
+            sendMessage(valueEditor);
+        }
+        setValueEditor('');
+    };
+
+    const handleEnter = ({ detail }: any) => {
+        const mess = detail;
+        if (mess.trim()) {
+            if (mess) {
+                if (window.localStorage.getItem('editMess') != null) {
+                    const edit = JSON.parse(window.localStorage.getItem('editMess')!);
+                    onSaveEditMessage(edit.id, mess);
+                } else {
+                    sendMessage(mess);
+                    setValueEditor('');
+                }
+            }
+        }
+    };
+
+    React.useEffect(() => {
+        const cacheMessage = get(
+            JSON.parse(window.localStorage.getItem('draftMessage') || '{}'),
+            get(conversation, '_id', ''),
+            ''
+        );
+        setValueEditor(cacheMessage);
+    }, [conversation]);
+
+    const editMessage = (data: any) => {
+        const { content, _id } = data.detail;
+        setValueEditor(content);
+        setIdMess(_id);
+        setEditing(true);
+        window.localStorage.setItem('editMess', JSON.stringify({ id: _id, edit: true }));
+    };
+
+    const onDeleteMessage = (data: any) => {
+        const { _id } = data.detail;
+        deleteMessage(WORKSPACE_ID, _id);
+    };
+
+    const onCancelEditMessage = () => {
+        setValueEditor('');
+        setIdMess('');
+        setEditing(false);
+        window.localStorage.removeItem('editMess');
+    };
+
+    const onSaveEditMessage = async (id?: string, content?: string) => {
+        const newId = typeof id == 'string' ? id : idMess;
+        const message: any = await messageApis.updateMessage(WORKSPACE_ID, newId, content || valueEditor);
+        await updateMessagesFromSocket(message);
+        setValueEditor('');
+        setIdMess('');
+        setEditing(false);
+        window.localStorage.removeItem('editMess');
+    };
+
+    const handleInit = (evt: any, editor: any) => {
+        setCountLengthValue(editor.getContent({ format: 'text' }).length);
+    };
+
+    React.useEffect(() => {
+        window.addEventListener(CLIENT_EVENT.CHANGE_SEND_MESSAGE, handleChange);
+        window.addEventListener(CLIENT_EVENT.ENTER_SEND_MESSAGE, handleEnter);
+        window.addEventListener(CLIENT_EVENT.EDIT_MESSAGE, editMessage);
+        window.addEventListener(CLIENT_EVENT.DELETE_MESSAGE, onDeleteMessage);
+        return () => {
+            window.removeEventListener(CLIENT_EVENT.CHANGE_SEND_MESSAGE, handleChange);
+            window.removeEventListener(CLIENT_EVENT.ENTER_SEND_MESSAGE, handleEnter);
+            window.removeEventListener(CLIENT_EVENT.EDIT_MESSAGE, editMessage);
+            window.removeEventListener(CLIENT_EVENT.DELETE_MESSAGE, onDeleteMessage);
+        };
+    });
 
     return (
         <StyledSenderAreaWrapper>
@@ -65,7 +200,7 @@ export const SenderArea = () => {
             ) : countLengthValue === 0 ? (
                 <AttachBtn />
             ) : (
-                <SenderIconBtn onClick={sendMessage} />
+                <SenderIconBtn onClick={handleSendMessage} />
             )}
         </StyledSenderAreaWrapper>
     );

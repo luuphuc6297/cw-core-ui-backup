@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { AutoCompleteFiled, InputField, MemberOptionType } from 'components';
+import { AutoCompleteFiled, AvatarConversation, InputField, MemberOptionType } from 'components';
 import { isEmpty } from 'lodash';
 import { CreateConversationForm, ListResponse, WorkspaceUser } from 'models';
 import React from 'react';
@@ -50,8 +50,7 @@ export const CreateConversation = ({ initialValues, onSubmit, onCancel, users }:
                 return {
                     id: user.attributes['_id'],
                     name: `${user.attributes['firstName']} ${user.attributes['lastName']}`,
-                    // avatar: <AvatarConversation user={user.attributes} />,
-                    avatar: <div></div>,
+                    avatar: <AvatarConversation user={user.attributes} />,
                 };
             });
             setOptions(getOptions);

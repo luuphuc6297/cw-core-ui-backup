@@ -31,6 +31,7 @@ export const EditMenu = ({ anchorEl, open, onClose }: EditMenuProps) => {
                 onClick={() => {
                     const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, { detail: 'create-conversation' });
                     window.dispatchEvent(widgetEvent);
+                    onClose();
                 }}
             >
                 <StyledIconPerson />

@@ -4,6 +4,7 @@ import { userApis } from 'apis/userApis';
 
 export interface UserSlice {
     user: CurrentUser;
+    storeUser: (user: CurrentUser) => void;
 }
 
 const initUser: CurrentUser = {

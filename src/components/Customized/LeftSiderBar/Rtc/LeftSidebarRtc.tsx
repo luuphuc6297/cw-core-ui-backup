@@ -4,6 +4,7 @@ import { Conversation } from 'models';
 import { useNavigate } from 'react-router-dom';
 import { useRtcStore } from 'store/zustand/rtcStore';
 import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { WORKSPACE_ID } from 'utils';
 import { CreateConversationArea } from './CreateConversationArea';
 import { ListConversations } from './ListConversations';
 
@@ -22,6 +23,8 @@ export const LeftSidebarRtc = ({ onClickSearch }: any) => {
 
     const {
         conversations,
+        createNewConversation,
+        inviteUsers,
     } = useRtcStore((state: ConversationSlice) => state);
     const {
         users,
@@ -32,7 +35,10 @@ export const LeftSidebarRtc = ({ onClickSearch }: any) => {
     };
 
     const onSubmit = async (formValues: any, onCancel: any) => {
-        // Handle logic in here
+        const result: Conversation = await createNewConversation(WORKSPACE_ID , formValues);
+        inviteUsers(WORKSPACE_ID, result._id, formValues?.selectedId);
+        onCancel();
+        navigate(`/rtc/${result._id}`);
     };
 
     return (

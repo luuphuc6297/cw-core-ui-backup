@@ -2,8 +2,9 @@ import React from 'react';
 import { useConversationList, useConversationUpdate, useMessageList, useMessageUpdate } from 'services';
 import { useUserList } from 'services/users';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { ConversationSlice, UserSlice, WorkSpaceSlice } from 'store/zustand/slices';
 import { WORKSPACE_ID } from 'utils';
+import { DATA_FAKE } from '../data';
 
 const GetPayload = () => {
     
@@ -14,6 +15,10 @@ const GetPayload = () => {
     const {
         setUsers,
     } = useRtcStore((state: WorkSpaceSlice) => state);
+
+    const {
+        storeUser,
+    } = useRtcStore((state: UserSlice | any) => state);
 
     const { data: conversations } = useConversationList(WORKSPACE_ID, {
         limit: 30,
@@ -122,8 +127,15 @@ const GetPayload = () => {
 
     React.useEffect(() => {
         if (conversations) setConversations(conversations);
+    }, [conversations]);
+
+    React.useEffect(() => {
         if (users) setUsers(users);
-    }, []);
+    }, [users]);
+
+    React.useEffect(() => {
+        storeUser(DATA_FAKE.user)
+    }, [])
 
     return <React.Fragment>
         {/* <button onClick={updateMessage}>update</button> */}

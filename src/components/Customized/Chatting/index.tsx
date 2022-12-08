@@ -5,7 +5,7 @@ import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
+import { ConversationSlice, MessageSlice, TypingSlice, UserSlice } from 'store/zustand/slices';
 import { formatDistance, WORKSPACE_ID } from 'utils';
 
 // interface ChattingProps {
@@ -46,10 +46,15 @@ export const Chatting = () => {
         getUsersConversation,
         getConversationDetail,
     } = useRtcStore((state: ConversationSlice) => state);
+    const { typing } = useRtcStore((state: TypingSlice) => state);
     const {
         messages,
         getDataMessages,
     } = useRtcStore((state: MessageSlice) => state);
+
+    const {
+        user,
+    } = useRtcStore((state: UserSlice | any) => state);
 
     React.useEffect(() => {
         const elmContent: any = document.getElementById(`scrollable-box`);
@@ -81,8 +86,8 @@ export const Chatting = () => {
             <MessagesArea>
                 <LoadMoreMessages
                     messages={messages}
-                    currentUser={DATA_FAKE.user}
-                    typing={[]}
+                    currentUser={user}
+                    typing={typing}
                     loadMessages={loadMessages}
                 />
             </MessagesArea>

@@ -72,7 +72,6 @@ export const AutoCompleteFiled = ({ name, control, label, disabled, options }: S
                         }}
                         {...props}
                     >
-                        {console.log(name, avatar, id)}
                         {avatar}
                         <Typography variant="body2">{name}</Typography>
                     </Box>
