@@ -3,9 +3,10 @@ import { styled } from '@mui/system';
 import { ConversationsTitle, LoadMoreMessages, MessagesArea, SenderArea } from 'components';
 import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useRtcStore } from 'store/zustand/rtcStore';
 import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
-import { formatDistance } from 'utils';
+import { formatDistance, WORKSPACE_ID } from 'utils';
 
 // interface ChattingProps {
 //     messages?: ListResponse;
@@ -38,11 +39,16 @@ const StyledTitleChat = styled(Box)(({ theme }) => ({
 
 export const Chatting = () => {
 
+    const { id: conversationId } = useParams();
+
     const {
         conversation,
+        getUsersConversation,
+        getConversationDetail,
     } = useRtcStore((state: ConversationSlice) => state);
     const {
         messages,
+        getDataMessages,
     } = useRtcStore((state: MessageSlice) => state);
 
     React.useEffect(() => {
@@ -51,6 +57,14 @@ export const Chatting = () => {
     }, [conversation._id]);
 
     const loadMessages = () => {};
+
+    React.useEffect(() => {
+        if (conversationId) {
+            getConversationDetail(WORKSPACE_ID, conversationId);
+            getDataMessages(WORKSPACE_ID, conversationId, 1);
+            getUsersConversation(WORKSPACE_ID, conversationId);
+        }
+    }, [conversationId])
 
     if (!conversation._id) return <></>;
     return (
