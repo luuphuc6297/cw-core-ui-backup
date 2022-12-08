@@ -1,0 +1,1318 @@
+{
+    "messages": {
+        "meta": {
+            "count": 3,
+            "totalPages": 1,
+            "limit": 30,
+            "skip": 0
+        },
+        "data": [
+            {
+                "_id": "ccdf4040-e2e2-4a2d-b8d0-56480fb1b706",
+                "type": "Message",
+                "attributes": {
+                    "contentType": "Text",
+                    "generator": "Server",
+                    "_id": "ccdf4040-e2e2-4a2d-b8d0-56480fb1b706",
+                    "conversationId": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                    "content": "Van Pho has started \"test conversation socket 21\""
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:06:48.857Z",
+                    "updatedAt": "2022-10-15T04:06:48.857Z",
+                    "respondedAt": "2022-12-07T13:52:09.530Z"
+                }
+            },
+            {
+                "_id": "c8843c67-3996-4481-a31c-7ad2512325d2",
+                "type": "Message",
+                "attributes": {
+                    "contentType": "Text",
+                    "generator": "Server",
+                    "_id": "c8843c67-3996-4481-a31c-7ad2512325d2",
+                    "conversationId": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                    "content": "Van Pho has added undefined undefined to the conversation"
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:06:49.353Z",
+                    "updatedAt": "2022-10-15T04:06:49.353Z",
+                    "respondedAt": "2022-12-07T13:52:09.530Z"
+                }
+            },
+            {
+                "_id": "a36d1a63-54f9-4860-839c-e039d333b168",
+                "type": "Message",
+                "attributes": {
+                    "contentType": "Text",
+                    "generator": "User",
+                    "_id": "a36d1a63-54f9-4860-839c-e039d333b168",
+                    "content": "Hé lu",
+                    "conversationId": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "createdAt": "2022-07-13T04:27:07.241Z",
+                        "updatedAt": "2022-07-13T04:27:07.241Z",
+                        "__v": 0,
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-25T06:58:21.435Z",
+                    "updatedAt": "2022-11-25T06:58:21.435Z",
+                    "respondedAt": "2022-12-07T13:52:09.530Z"
+                }
+            }
+        ]
+    },
+
+    "usersConversation": {
+        "meta": {
+            "count": 0,
+            "totalPages": 0,
+            "limit": 0,
+            "skip": 0
+        },
+        "data": []
+    },
+    "users": {
+        "meta": {
+            "count": 8,
+            "totalPages": 1,
+            "limit": null,
+            "skip": 0
+        },
+        "data": [
+            {
+                "_id": "d94db0fd-8402-40b7-9baf-a6ac9ccd041e",
+                "type": "User",
+                "attributes": {
+                    "_id": "d94db0fd-8402-40b7-9baf-a6ac9ccd041e",
+                    "email": "phonghiavan@gmail.com",
+                    "firstName": "Van",
+                    "lastName": "Pho 1",
+                    "avatarUrl": "https://www.w3schools.com/howto/img_avatar.png"
+                },
+                "meta": {
+                    "createdAt": "2022-07-08T04:33:36.573Z",
+                    "updatedAt": "2022-07-08T04:33:36.573Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                "type": "User",
+                "attributes": {
+                    "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                    "email": "phonghiavan+owner1@gmail.com",
+                    "firstName": "Van",
+                    "lastName": "Pho",
+                    "avatarUrl": null,
+                    "avatarPath": "sso/images/husky-close-up.jpg"
+                },
+                "meta": {
+                    "createdAt": "2022-07-13T04:27:07.241Z",
+                    "updatedAt": "2022-07-13T04:27:07.241Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "dec67e95-9dbb-4e63-96d0-3ef1e1cb56ea",
+                "type": "User",
+                "attributes": {
+                    "_id": "dec67e95-9dbb-4e63-96d0-3ef1e1cb56ea",
+                    "email": "luuphuc6297+49991@gmail.com",
+                    "firstName": "Phuc",
+                    "lastName": "Luu",
+                    "avatarUrl": "https://www.w3schools.com/howto/img_avatar.png"
+                },
+                "meta": {
+                    "createdAt": "2022-08-06T04:19:14.767Z",
+                    "updatedAt": "2022-08-06T04:19:14.767Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "fec26d6d-043c-4085-b56e-a9dd6b6b791f",
+                "type": "User",
+                "attributes": {
+                    "_id": "fec26d6d-043c-4085-b56e-a9dd6b6b791f",
+                    "email": "phucdt4697@gmail.com",
+                    "firstName": "Phuc",
+                    "lastName": "DT",
+                    "avatarUrl": "https://www.w3schools.com/howto/img_avatar.png"
+                },
+                "meta": {
+                    "createdAt": "2022-08-08T12:00:00.960Z",
+                    "updatedAt": "2022-08-08T12:00:00.960Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                "type": "User",
+                "attributes": {
+                    "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                    "email": "dev@coachingworkspace.io"
+                },
+                "meta": {
+                    "createdAt": "2022-09-28T07:47:03.173Z",
+                    "updatedAt": "2022-09-28T07:47:03.173Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "9472e937-8376-48ce-b53c-dce744b29bff",
+                "type": "User",
+                "attributes": {
+                    "_id": "9472e937-8376-48ce-b53c-dce744b29bff",
+                    "email": "james@coachingcloud.com",
+                    "firstName": "James",
+                    "lastName": "Stokes"
+                },
+                "meta": {
+                    "createdAt": "2022-09-28T08:40:44.753Z",
+                    "updatedAt": "2022-09-28T08:40:44.753Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "1592313a-bb62-4ea6-86be-c1ed160c5a05",
+                "type": "User",
+                "attributes": {
+                    "_id": "1592313a-bb62-4ea6-86be-c1ed160c5a05",
+                    "email": "luuphuc6297@gmail.com",
+                    "avatarPath": null
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:12:48.536Z",
+                    "updatedAt": "2022-10-15T03:12:48.536Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            },
+            {
+                "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                "type": "User",
+                "attributes": {
+                    "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                    "email": "phuc.dinh@coachingcloud.io",
+                    "avatarPath": null,
+                    "firstName": "Phuc",
+                    "lastName": "Dinh"
+                },
+                "meta": {
+                    "createdAt": "2022-10-18T08:43:44.702Z",
+                    "updatedAt": "2022-10-18T08:43:44.702Z",
+                    "respondedAt": "2022-12-07T11:45:24.563Z"
+                }
+            }
+        ]
+    },
+    "workspace": {
+        "id": "38647fbd-20a8-40ab-8292-b4828d636d29",
+        "attributes": {
+            "name": "",
+            "domain": "",
+            "dropletName": ""
+        }
+    },
+    "typing": [],
+
+    "conversation": {
+        "_id": "38647fbd-20a8-40ab-8292-b4828d636d29",
+        "type": "Conversation",
+        "attributes": {
+            "contextId": 0,
+            "imageUrl": "",
+            "imagePath": "",
+            "color": "",
+            "title": "",
+            "userCount": 0,
+            "recentActivities": [],
+            "status": "",
+            "mode": "",
+            "lastMessage": {
+                "content": "",
+                "contentType": "",
+                "conversationId": "",
+                "createdAt": "",
+                "generator": "",
+                "updatedAt": "",
+                "_id": ""
+            },
+            "user": {
+                "lastName": "",
+                "firstName": "",
+                "_id": "",
+                "email": ""
+            }
+        },
+        "meta": {
+            "createdAt": "",
+            "updatedAt": "",
+            "respondedAt": ""
+        }
+    },
+    "user": {
+        "id": "",
+        "attributes": {
+            "_id": "",
+            "iss": "",
+            "sub": "",
+            "type": "",
+            "status": "",
+            "timezone": {
+                "value": "",
+                "offset": 0,
+                "abbrev": ""
+            },
+            "createdAt": "",
+            "updatedAt": "",
+            "email": "",
+            "firstName": "",
+            "lastName": "",
+            "phone": "",
+            "avatarUrl": "",
+            "setPassword": false,
+            "bio": "",
+            "workspaces": [],
+            "token": ""
+        }
+    },
+    "valueEditor": "",
+
+    "conversations": {
+        "meta": {
+            "count": 21,
+            "totalPages": 1,
+            "limit": 30,
+            "skip": 0
+        },
+        "data": [
+            {
+                "_id": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                    "title": "test conversation socket 21",
+                    "color": "#2196f3",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "a36d1a63-54f9-4860-839c-e039d333b168",
+                        "content": "Hé lu",
+                        "conversationId": "31eb0aef-104c-4da1-92d1-94e382e8c532",
+                        "createdAt": "2022-11-25T06:58:21.435Z",
+                        "updatedAt": "2022-11-25T06:58:21.435Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "createdAt": "2022-07-13T04:27:07.241Z",
+                            "updatedAt": "2022-07-13T04:27:07.241Z",
+                            "__v": 0,
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:06:48.792Z",
+                    "updatedAt": "2022-10-15T04:06:49.348Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "049b6924-7f3b-4934-8c55-819d2fb22dce",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "049b6924-7f3b-4934-8c55-819d2fb22dce",
+                    "title": "test conversation socket 1",
+                    "color": "#1976d2",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "d718fcfe-8864-44dd-8de3-ac3f875c984e",
+                        "content": "ổn áp phết",
+                        "conversationId": "049b6924-7f3b-4934-8c55-819d2fb22dce",
+                        "createdAt": "2022-11-24T09:38:15.998Z",
+                        "updatedAt": "2022-11-24T09:38:15.998Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "createdAt": "2022-07-13T04:27:07.241Z",
+                            "updatedAt": "2022-07-13T04:27:07.241Z",
+                            "__v": 0,
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:57:05.049Z",
+                    "updatedAt": "2022-10-15T03:57:05.590Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "c3857068-af22-426b-976b-2fbf7158d658",
+                "attributes": {
+                    "userCount": 1,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "c3857068-af22-426b-976b-2fbf7158d658",
+                    "title": "test111",
+                    "color": "#64b5f6",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "3e4c4cfb-4df3-4d81-8647-ff67bedf1619",
+                        "content": "asdasd",
+                        "conversationId": "c3857068-af22-426b-976b-2fbf7158d658",
+                        "createdAt": "2022-11-13T07:08:19.369Z",
+                        "updatedAt": "2022-11-13T07:08:19.369Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io",
+                            "createdAt": "2022-09-28T07:47:03.173Z",
+                            "updatedAt": "2022-09-28T07:47:03.173Z",
+                            "__v": 0
+                        }
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:51:07.403Z",
+                    "updatedAt": "2022-11-08T16:51:07.403Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "386ae719-5030-4b7c-be8f-7f2b3075486c",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        },
+                        {
+                            "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                            "email": "phuc.dinh@coachingcloud.io",
+                            "avatarPath": null,
+                            "firstName": "Phuc",
+                            "lastName": "Dinh"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "386ae719-5030-4b7c-be8f-7f2b3075486c",
+                    "title": "asjdk",
+                    "color": "#3f51b5",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "d13d3896-27ed-4b5b-b44c-e60f4c201d1d",
+                        "conversationId": "386ae719-5030-4b7c-be8f-7f2b3075486c",
+                        "content": "undefined undefined has added Phuc Dinh to the conversation",
+                        "createdAt": "2022-11-08T17:04:50.429Z",
+                        "updatedAt": "2022-11-08T17:04:50.429Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T17:04:49.850Z",
+                    "updatedAt": "2022-11-08T17:04:50.423Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "8d092efb-847c-4051-a5ba-fe7bcf3ce5e8",
+                "attributes": {
+                    "userCount": 1,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "8d092efb-847c-4051-a5ba-fe7bcf3ce5e8",
+                    "title": "asdq11",
+                    "color": "#9e9e9e",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "69c966ba-797c-424e-bc9c-cd0bc1dfb7c0",
+                        "conversationId": "8d092efb-847c-4051-a5ba-fe7bcf3ce5e8",
+                        "content": "undefined undefined has started \"asdq11\"",
+                        "createdAt": "2022-11-08T16:48:09.197Z",
+                        "updatedAt": "2022-11-08T16:48:09.197Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:48:09.126Z",
+                    "updatedAt": "2022-11-08T16:48:09.126Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "24059421-7685-473e-9a8f-c0c20ef440a3",
+                "attributes": {
+                    "userCount": 1,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "24059421-7685-473e-9a8f-c0c20ef440a3",
+                    "title": "tesafq12",
+                    "color": "#009688",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "385ee21a-e292-44ca-8296-85bcbffa78ac",
+                        "conversationId": "24059421-7685-473e-9a8f-c0c20ef440a3",
+                        "content": "undefined undefined has started \"tesafq12\"",
+                        "createdAt": "2022-11-08T16:43:01.449Z",
+                        "updatedAt": "2022-11-08T16:43:01.449Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:43:01.376Z",
+                    "updatedAt": "2022-11-08T16:43:01.376Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "bc9710fd-fc8d-4592-a95d-443c17c551f6",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        },
+                        {
+                            "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                            "email": "phuc.dinh@coachingcloud.io",
+                            "avatarPath": null,
+                            "firstName": "Phuc",
+                            "lastName": "Dinh"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "bc9710fd-fc8d-4592-a95d-443c17c551f6",
+                    "title": "asdasd",
+                    "color": "#2196f3",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "7f4d6cb4-06aa-4b9c-a95e-3abfa567d141",
+                        "conversationId": "bc9710fd-fc8d-4592-a95d-443c17c551f6",
+                        "content": "undefined undefined has added Phuc Dinh to the conversation",
+                        "createdAt": "2022-11-08T16:40:52.664Z",
+                        "updatedAt": "2022-11-08T16:40:52.664Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:40:51.404Z",
+                    "updatedAt": "2022-11-08T16:40:52.659Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "ba8ef961-940c-4968-827f-20bbb1df8661",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        },
+                        {
+                            "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                            "email": "phuc.dinh@coachingcloud.io",
+                            "avatarPath": null,
+                            "firstName": "Phuc",
+                            "lastName": "Dinh"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "ba8ef961-940c-4968-827f-20bbb1df8661",
+                    "title": "test",
+                    "color": "#81c784",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "699f0a95-6faf-4ac5-acdd-3a9c7c5c035f",
+                        "conversationId": "ba8ef961-940c-4968-827f-20bbb1df8661",
+                        "content": "undefined undefined has added Phuc Dinh to the conversation",
+                        "createdAt": "2022-11-08T16:34:08.789Z",
+                        "updatedAt": "2022-11-08T16:34:08.789Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:34:07.473Z",
+                    "updatedAt": "2022-11-08T16:34:08.784Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "e2ccade5-3bc6-413c-905d-c049cc145312",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        },
+                        {
+                            "_id": "b02389a4-64f6-46fe-a4ed-6e79f8027fbc",
+                            "email": "phuc.dinh@coachingcloud.io",
+                            "avatarPath": null,
+                            "firstName": "Phuc",
+                            "lastName": "Dinh"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "e2ccade5-3bc6-413c-905d-c049cc145312",
+                    "title": "test create 1",
+                    "color": "#4db6ac",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "9a3c82e0-08e6-45a1-9712-ee738327da83",
+                        "conversationId": "e2ccade5-3bc6-413c-905d-c049cc145312",
+                        "content": "undefined undefined has added Phuc Dinh to the conversation",
+                        "createdAt": "2022-11-08T16:22:35.221Z",
+                        "updatedAt": "2022-11-08T16:22:35.221Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:22:34.198Z",
+                    "updatedAt": "2022-11-08T16:22:35.215Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "96cbaa79-c0ad-419f-93f6-701cc73e84d4",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        },
+                        {
+                            "_id": "dec67e95-9dbb-4e63-96d0-3ef1e1cb56ea",
+                            "email": "luuphuc6297+49991@gmail.com",
+                            "firstName": "Phuc",
+                            "lastName": "Luu",
+                            "avatarUrl": "https://www.w3schools.com/howto/img_avatar.png"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "96cbaa79-c0ad-419f-93f6-701cc73e84d4",
+                    "title": "a",
+                    "color": "#00bcd4",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "f27cbad2-9160-47dd-8654-9e12935ac9cb",
+                        "conversationId": "96cbaa79-c0ad-419f-93f6-701cc73e84d4",
+                        "content": "undefined undefined has added Phuc Luu to the conversation",
+                        "createdAt": "2022-11-08T16:12:15.689Z",
+                        "updatedAt": "2022-11-08T16:12:15.689Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                        "email": "dev@coachingworkspace.io"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-11-08T16:12:14.458Z",
+                    "updatedAt": "2022-11-08T16:12:15.680Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "e4382c13-39e6-4b62-8c6f-cd7daa27fe5a",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "e4382c13-39e6-4b62-8c6f-cd7daa27fe5a",
+                    "title": "test create conversation 123123",
+                    "color": "#00bcd4",
+                    "imagePath": "https://coachingworkspace-assets.s3.amazonaws.com//sso/7c3ea1807d012b00285003ddf0318a69.jpeg",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "139cd3bc-13cc-47f9-a45c-d09ad524444b",
+                        "content": "asd",
+                        "conversationId": "e4382c13-39e6-4b62-8c6f-cd7daa27fe5a",
+                        "createdAt": "2022-11-05T13:14:19.976Z",
+                        "updatedAt": "2022-11-05T13:14:19.976Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io",
+                            "createdAt": "2022-09-28T07:47:03.173Z",
+                            "updatedAt": "2022-09-28T07:47:03.173Z",
+                            "__v": 0
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-18T08:24:06.732Z",
+                    "updatedAt": "2022-10-25T12:38:58.209Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "db8a5f8f-acb7-4a5c-9d0c-8490591720b3",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "db8a5f8f-acb7-4a5c-9d0c-8490591720b3",
+                    "title": "test create conversation askdjha",
+                    "color": "#0097a7",
+                    "imagePath": "workspaces/undefined/rtc/conversations/db8a5f8f-acb7-4a5c-9d0c-8490591720b3/Screen Shot 2022-10-23 at 9.26.24 PM.png",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "d0d2c54e-3e49-4146-a004-f7bc0afc3faf",
+                        "conversationId": "db8a5f8f-acb7-4a5c-9d0c-8490591720b3",
+                        "content": "undefined undefined updated the conversation",
+                        "createdAt": "2022-10-24T15:23:59.705Z",
+                        "updatedAt": "2022-10-24T15:23:59.705Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-18T08:25:33.877Z",
+                    "updatedAt": "2022-10-24T15:16:20.372Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "e5d1bf81-2b89-4ee2-8ba8-69c46a0ac763",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "e5d1bf81-2b89-4ee2-8ba8-69c46a0ac763",
+                    "title": "tétasda",
+                    "color": "#00bcd4",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "9213a886-95cc-4fce-866e-c3cb23618300",
+                        "conversationId": "e5d1bf81-2b89-4ee2-8ba8-69c46a0ac763",
+                        "content": "Van Pho has added undefined undefined to the conversation",
+                        "createdAt": "2022-10-18T08:15:32.792Z",
+                        "updatedAt": "2022-10-18T08:15:32.792Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-18T08:15:31.973Z",
+                    "updatedAt": "2022-10-18T08:15:32.784Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "94a17871-c544-4d99-9afe-6dbab1410ba8",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "94a17871-c544-4d99-9afe-6dbab1410ba8",
+                    "title": "test socket conversation 123123",
+                    "color": "#303f9f",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "2062c44d-05d7-4d91-8b14-969f6a542835",
+                        "content": "<p><br data-mce-bogus=\"1\"></p>",
+                        "conversationId": "94a17871-c544-4d99-9afe-6dbab1410ba8",
+                        "createdAt": "2022-10-18T06:51:35.101Z",
+                        "updatedAt": "2022-10-18T06:51:35.101Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io",
+                            "createdAt": "2022-09-28T07:47:03.173Z",
+                            "updatedAt": "2022-09-28T07:47:03.173Z",
+                            "__v": 0
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:11:01.062Z",
+                    "updatedAt": "2022-10-15T04:11:01.648Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "8c459869-59ef-46b6-9501-d9cd3c7f2110",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "8c459869-59ef-46b6-9501-d9cd3c7f2110",
+                    "title": "HAhah",
+                    "color": "#81c784",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "f1e64912-0711-44c1-812c-3473ccda07a7",
+                        "content": "<p><br data-mce-bogus=\"1\"></p>",
+                        "conversationId": "8c459869-59ef-46b6-9501-d9cd3c7f2110",
+                        "createdAt": "2022-10-18T06:47:46.461Z",
+                        "updatedAt": "2022-10-18T06:47:46.461Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io",
+                            "createdAt": "2022-09-28T07:47:03.173Z",
+                            "updatedAt": "2022-09-28T07:47:03.173Z",
+                            "__v": 0
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:11:31.986Z",
+                    "updatedAt": "2022-10-16T08:46:34.929Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "bfedeb46-2059-4328-b7cd-dc3e7c52caa5",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "bfedeb46-2059-4328-b7cd-dc3e7c52caa5",
+                    "title": "test socket conversation2 1213",
+                    "color": "#81c784",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "149653df-d4f3-47f5-8447-8f4ed5a83cad",
+                        "conversationId": "bfedeb46-2059-4328-b7cd-dc3e7c52caa5",
+                        "content": "Van Pho has added undefined undefined to the conversation",
+                        "createdAt": "2022-10-15T04:07:59.322Z",
+                        "updatedAt": "2022-10-15T04:07:59.322Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:07:58.730Z",
+                    "updatedAt": "2022-10-15T04:07:59.317Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "cb5ee6c3-f634-460e-a26f-b103666703c2",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "cb5ee6c3-f634-460e-a26f-b103666703c2",
+                    "title": "test socket conversation 1",
+                    "color": "#4dd0e1",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "91fc1e4f-590c-45e7-a741-64fdce4986c3",
+                        "conversationId": "cb5ee6c3-f634-460e-a26f-b103666703c2",
+                        "content": "Van Pho has added undefined undefined to the conversation",
+                        "createdAt": "2022-10-15T04:05:47.291Z",
+                        "updatedAt": "2022-10-15T04:05:47.291Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T04:05:46.723Z",
+                    "updatedAt": "2022-10-15T04:05:47.287Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "1c118441-a7a1-4cf1-9688-5428f3350119",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "1c118441-a7a1-4cf1-9688-5428f3350119",
+                    "title": "test conversation socket 22",
+                    "color": "#303f9f",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "c4970e2f-7df7-462b-99b6-d0758b690501",
+                        "conversationId": "1c118441-a7a1-4cf1-9688-5428f3350119",
+                        "content": "Van Pho has added undefined undefined to the conversation",
+                        "createdAt": "2022-10-15T03:59:51.606Z",
+                        "updatedAt": "2022-10-15T03:59:51.606Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:59:51.051Z",
+                    "updatedAt": "2022-10-15T03:59:51.601Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "5b3cc035-dac7-4e9f-8d8a-a058758f6355",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "5b3cc035-dac7-4e9f-8d8a-a058758f6355",
+                    "title": "test create conversation socket",
+                    "color": "#3f51b5",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "dbe4bdec-6624-40bd-b133-193b659d1d7b",
+                        "content": "<p>hello</p>",
+                        "conversationId": "5b3cc035-dac7-4e9f-8d8a-a058758f6355",
+                        "createdAt": "2022-10-15T03:50:14.092Z",
+                        "updatedAt": "2022-10-15T03:50:14.092Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "createdAt": "2022-07-13T04:27:07.241Z",
+                            "updatedAt": "2022-07-13T04:27:07.241Z",
+                            "__v": 0,
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:49:30.490Z",
+                    "updatedAt": "2022-10-15T03:49:31.037Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "c8f51e98-2b5c-4c95-8d13-b6aa349c0e5d",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "c8f51e98-2b5c-4c95-8d13-b6aa349c0e5d",
+                    "title": "test create conversation 1",
+                    "color": "#9e9e9e",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "User",
+                        "_id": "68f47be4-9b3f-4b29-beef-093b93d9ccc2",
+                        "content": "<p>asd</p>",
+                        "conversationId": "c8f51e98-2b5c-4c95-8d13-b6aa349c0e5d",
+                        "createdAt": "2022-10-15T03:48:12.923Z",
+                        "updatedAt": "2022-10-15T03:48:12.923Z",
+                        "__v": 0,
+                        "user": {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "createdAt": "2022-07-13T04:27:07.241Z",
+                            "updatedAt": "2022-07-13T04:27:07.241Z",
+                            "__v": 0,
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        }
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:44:25.290Z",
+                    "updatedAt": "2022-10-15T03:44:26.060Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            },
+            {
+                "_id": "8656183b-914d-4b14-bf96-9d9a07e46003",
+                "attributes": {
+                    "userCount": 2,
+                    "recentActivities": [
+                        {
+                            "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                            "email": "phonghiavan+owner1@gmail.com",
+                            "firstName": "Van",
+                            "lastName": "Pho",
+                            "avatarUrl": null,
+                            "avatarPath": "sso/images/husky-close-up.jpg"
+                        },
+                        {
+                            "_id": "6081a74c-ec53-42d9-b95c-3827e0a46702",
+                            "email": "dev@coachingworkspace.io"
+                        }
+                    ],
+                    "status": "Active",
+                    "mode": "Private",
+                    "_id": "8656183b-914d-4b14-bf96-9d9a07e46003",
+                    "title": "test create conversation",
+                    "color": "#1976d2",
+                    "lastMessage": {
+                        "contentType": "Text",
+                        "generator": "Server",
+                        "_id": "78545d99-240b-486a-98b6-8cbb15410a7c",
+                        "conversationId": "8656183b-914d-4b14-bf96-9d9a07e46003",
+                        "content": "Van Pho has added undefined undefined to the conversation",
+                        "createdAt": "2022-10-15T03:42:16.879Z",
+                        "updatedAt": "2022-10-15T03:42:16.879Z",
+                        "__v": 0
+                    },
+                    "user": {
+                        "_id": "4b3f4d83-112a-4b71-8a73-578def8a1cb7",
+                        "email": "phonghiavan+owner1@gmail.com",
+                        "firstName": "Van",
+                        "lastName": "Pho",
+                        "avatarUrl": null,
+                        "avatarPath": "sso/images/husky-close-up.jpg"
+                    }
+                },
+                "meta": {
+                    "createdAt": "2022-10-15T03:42:16.322Z",
+                    "updatedAt": "2022-10-15T03:42:16.872Z",
+                    "respondedAt": "2022-12-07T13:10:27.514Z"
+                }
+            }
+        ]
+    }
+}

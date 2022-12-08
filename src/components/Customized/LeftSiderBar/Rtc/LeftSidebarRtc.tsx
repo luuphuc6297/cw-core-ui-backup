@@ -1,21 +1,9 @@
 import { List, OutlinedInput } from '@mui/material';
 import { Box, styled } from '@mui/system';
-import { Conversation, CreateConversationForm, ListResponse } from 'models';
-import React from 'react';
-import { NavigateFunction } from 'react-router-dom';
+import { DATA_FAKE } from 'containers/Home/Rtc/data';
+import { Conversation, ListResponse } from 'models';
 import { CreateConversationArea } from './CreateConversationArea';
 import { ListConversations } from './ListConversations';
-
-interface LeftSidebarRtcProps {
-    drawer?: React.ReactNode;
-    openDrawer?: boolean;
-    conversations: any;
-    onClick: (conversation: Conversation) => void;
-    onSubmit?: (formValues: CreateConversationForm, onCancel: any) => Promise<void>;
-    users: any | ListResponse;
-    onClickSearch: () => void;
-    navigate: NavigateFunction;
-}
 
 const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
     height: 34,
@@ -26,14 +14,17 @@ const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
     },
 }));
 
-export const LeftSidebarRtc = ({
-    users,
-    onSubmit,
-    conversations,
-    onClick,
-    onClickSearch,
-    navigate,
-}: LeftSidebarRtcProps) => {
+export const LeftSidebarRtc = ({ onClickSearch }: any) => {
+    const onClick = (conversation: Conversation) => {
+        // Handle logic in here
+    };
+    const onSubmit = async (formValues: any, onCancel: any) => {
+        // Handle logic in here
+    };
+
+    const conversations: any = DATA_FAKE.conversations.data;
+    const users: any | ListResponse = DATA_FAKE.users;
+
     return (
         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
             <Box
@@ -49,7 +40,7 @@ export const LeftSidebarRtc = ({
                 <CreateConversationArea onSubmit={onSubmit} users={users} />
             </Box>
             <List sx={{ height: '100%', overflowY: 'auto' }}>
-                <ListConversations conversations={conversations} onClick={onClick} navigate={navigate} />
+                <ListConversations conversations={conversations} onClick={onClick} />
             </List>
         </Box>
     );

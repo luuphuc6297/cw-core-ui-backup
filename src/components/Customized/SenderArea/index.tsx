@@ -1,20 +1,19 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { AttachBtn, SaveEditingBtn, SenderIconBtn } from 'components';
+import React from 'react';
 
 import { CLIENT_EVENT } from 'utils';
 import { TinyMCE } from '../TinyMCE';
 
-interface SenderAreaProps {
-    valueEditor: string;
-    editing: boolean;
-    countLengthValue: number;
-    sendMessage?: () => void;
-
-    onCancelEditMessage: () => void;
-    onSaveEditMessage: () => void;
-    handleInit: (evt: any, editor: any) => void;
-}
+// interface SenderAreaProps {
+//     valueEditor: string;
+//     editing: boolean;
+//     countLengthValue: number;
+//     onCancelEditMessage: () => void;
+//     onSaveEditMessage: () => void;
+//     handleInit: (evt: any, editor: any) => void;
+// }
 
 const StyledSenderAreaWrapper = styled(Box)(({ theme }) => ({
     width: '100%',
@@ -29,15 +28,21 @@ const StyledSenderAreaWrapper = styled(Box)(({ theme }) => ({
     alignItems: 'center',
 }));
 
-export const SenderArea = ({
-    valueEditor,
-    sendMessage,
-    editing,
-    onCancelEditMessage,
-    onSaveEditMessage,
-    handleInit,
-    countLengthValue,
-}: SenderAreaProps) => {
+export const SenderArea = () => {
+    const [countLengthValue, setCountLengthValue] = React.useState<number>(0);
+    const [editing, setEditing] = React.useState(false);
+    const [valueEditor, setValueEditor] = React.useState<string>('');
+
+    const sendMessage = () => {
+        //Handle logic here
+    };
+
+    const onCancelEditMessage = () => {};
+
+    const onSaveEditMessage = async (id?: string, content?: string) => {};
+
+    const handleInit = (evt: any, editor: any) => {};
+
     return (
         <StyledSenderAreaWrapper>
             <TinyMCE

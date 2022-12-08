@@ -1,25 +1,22 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { ConversationsTitle, LoadMoreMessages, MessagesArea, SenderArea } from 'components';
-import { AttributesUser, Conversation, CurrentUser, ListResponse, WorkSpace } from 'models';
+import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import React from 'react';
 import { formatDistance } from 'utils';
 
-interface ChattingProps {
-    workspace: WorkSpace;
-    conversation: Conversation;
-    messages?: ListResponse;
-    valueEditor: string;
-    currentUser?: CurrentUser;
-    typing: AttributesUser[];
-    countLengthValue: number;
-    editing: boolean;
-    onCancelEditMessage: () => void;
-    onSaveEditMessage: () => void;
-    handleInit: (evt: any, editor: any) => void;
-    loadMessages: () => void | any;
-    sendMessage?: () => void;
-}
+// interface ChattingProps {
+//     messages?: ListResponse;
+//     valueEditor: string;
+//     typing?: AttributesUser[];
+//     countLengthValue: number;
+//     editing: boolean;
+//     onCancelEditMessage: () => void;
+//     onSaveEditMessage: () => void;
+//     handleInit: (evt: any, editor: any) => void;
+//     loadMessages: () => void | any;
+//     sendMessage?: () => void;
+// }
 
 const StyledMessageContentDetail = styled(Box)(({ theme }) => ({
     height: '100%',
@@ -37,25 +34,15 @@ const StyledTitleChat = styled(Box)(({ theme }) => ({
     boxSizing: 'content-box',
 }));
 
-export const Chatting = ({
-    workspace,
-    conversation,
-    currentUser,
-    messages,
-    valueEditor,
-    typing,
-    loadMessages,
-    sendMessage,
-    editing,
-    onCancelEditMessage,
-    onSaveEditMessage,
-    handleInit,
-    countLengthValue,
-}: ChattingProps) => {
+export const Chatting = () => {
+    const conversation = DATA_FAKE.conversation;
+
     React.useEffect(() => {
         const elmContent: any = document.getElementById(`scrollable-box`);
         if (elmContent) elmContent.scrollTop = elmContent.scrollHeight;
     }, [conversation._id]);
+
+    const loadMessages = () => {};
 
     if (!conversation._id) return <></>;
     return (
@@ -71,22 +58,14 @@ export const Chatting = ({
             </StyledTitleChat>
             <MessagesArea>
                 <LoadMoreMessages
-                    messages={messages}
-                    currentUser={currentUser}
-                    typing={typing}
+                    messages={DATA_FAKE.messages}
+                    currentUser={DATA_FAKE.user}
+                    typing={[]}
                     loadMessages={loadMessages}
                 />
             </MessagesArea>
 
-            <SenderArea
-                handleInit={handleInit}
-                valueEditor={valueEditor}
-                sendMessage={sendMessage}
-                editing={editing}
-                onCancelEditMessage={onCancelEditMessage}
-                onSaveEditMessage={onSaveEditMessage}
-                countLengthValue={countLengthValue}
-            />
+            <SenderArea />
         </StyledMessageContentDetail>
     );
 };

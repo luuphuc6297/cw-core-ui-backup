@@ -2,25 +2,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Box, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import { MainLayoutContext } from 'layouts';
-import { get, values } from 'lodash';
-import { Conversation, ListResponse } from 'models';
+import { get } from 'lodash';
+import { ListResponse } from 'models';
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useConversation, useConversationUpdate } from 'services';
+import { useParams } from 'react-router-dom';
 import AvatarUpload from '../../ConversationAvatar';
 import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
-
-const workspaceId = '38647fbd-20a8-40ab-8292-b4828d636d29';
-interface RightSidebarRtcProps {
-    conversation: Conversation;
-    handleChangeTitle: (value: string, conversationId: string) => void;
-    uploadAvatar: (e: any) => void;
-    usersConversation: ListResponse;
-    users: any | ListResponse;
-    onAddMember: (selectedId: string[]) => boolean;
-}
 
 const StyledTitleDetail = styled(Box)(({ theme }) => ({
     height: 65,
@@ -43,11 +33,13 @@ const StyledInfoUser = styled(Box)(({ theme }) => ({
     },
 }));
 
-export const RightSidebarRtc = ({ usersConversation, users, onAddMember }: RightSidebarRtcProps) => {
-    const { conversationId }: string | any = useParams();
-    const { conversation }: any = useConversation('', conversationId, { refetchOnWindowFocus: false });
+export const RightSidebarRtc = () => {
+    const conversation = DATA_FAKE.conversation;
 
-    const navigate = useNavigate();
+    const users: any | ListResponse = DATA_FAKE.users;
+
+    const usersConversation: ListResponse = DATA_FAKE.usersConversation;
+
     const { setIsShowRightSidebar } = React.useContext(MainLayoutContext);
 
     const leaveGroup = () => {
@@ -71,6 +63,10 @@ export const RightSidebarRtc = ({ usersConversation, users, onAddMember }: Right
         //     conversationId,
         //     payload: data,
         // } as any);
+    };
+
+    const onAddMember = (selectedId: string[]) => {
+        return false;
     };
 
     return (

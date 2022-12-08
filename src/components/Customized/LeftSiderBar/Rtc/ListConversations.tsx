@@ -6,13 +6,11 @@ import { styled } from '@mui/system';
 import { isNull } from 'lodash';
 import { Conversation, ItemResponse, Message } from 'models';
 import React from 'react';
-import { NavigateFunction } from 'react-router-dom';
 import { ConversationItem } from '../../ConversationItem';
 
 interface ListConversationsProps {
     conversations: ItemResponse[] & Message[];
     onClick: (conversation: Conversation) => void;
-    navigate: NavigateFunction;
 }
 
 const StyledCollapse = styled(Collapse)(({ theme }) => ({
@@ -20,7 +18,7 @@ const StyledCollapse = styled(Collapse)(({ theme }) => ({
     overflow: 'auto',
 }));
 
-export const ListConversations = ({ conversations, onClick, navigate }: ListConversationsProps) => {
+export const ListConversations = ({ conversations, onClick }: ListConversationsProps) => {
     const [open, setOpen] = React.useState(true);
 
     return (
@@ -41,7 +39,7 @@ export const ListConversations = ({ conversations, onClick, navigate }: ListConv
                                     key={conversation._id}
                                     conversation={conversation}
                                     handleListItemClick={(idConversation) => {
-                                        navigate(`/rtc/${idConversation}`);
+                                        console.log(`/rtc/${idConversation}`);
                                         onClick(conversation);
                                     }}
                                 />

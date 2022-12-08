@@ -1,13 +1,16 @@
 import { Box } from '@mui/material';
+import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import { isNull } from 'lodash';
 import React from 'react';
 import { ConversationItem } from '../../ConversationItem';
 import { FindingConversation } from './FindConversation';
 
-export const SearchConversationRtc = ({ conversations, onCloseSearch, navigate }: any) => {
+export const SearchConversationRtc = ({ onCloseSearch }: any) => {
     const handleOnChangeSearch = (value: string) => {
         console.log(value, 'value');
     };
+
+    const conversations = DATA_FAKE.conversations.data;
 
     return (
         <Box
@@ -28,7 +31,7 @@ export const SearchConversationRtc = ({ conversations, onCloseSearch, navigate }
                                 key={conversation._id}
                                 conversation={conversation}
                                 handleListItemClick={(idConversation) => {
-                                    navigate(`/rtc/${idConversation}`);
+                                    console.log(`/rtc/${idConversation}`);
                                 }}
                             />
                         )}
