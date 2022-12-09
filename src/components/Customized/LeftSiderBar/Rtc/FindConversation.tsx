@@ -44,7 +44,7 @@ export const FindingConversation = ({ debouncedOnChange, onCloseSearch }: Findin
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
-
+    
     return (
         <StyledSearchConversationArea>
             <StyledWrapperButton>

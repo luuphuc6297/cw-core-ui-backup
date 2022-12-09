@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { ConversationsTitle, LoadMoreMessages, MessagesArea, SenderArea } from 'components';
-import { DATA_FAKE } from 'containers/Home/Rtc/data';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useRtcStore } from 'store/zustand/rtcStore';

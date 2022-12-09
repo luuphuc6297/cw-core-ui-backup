@@ -1,7 +1,7 @@
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Collapse, List, ListItemButton, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
 import { isNull } from 'lodash';
 import { Conversation, ItemResponse, Message } from 'models';
@@ -23,7 +23,13 @@ export const ListConversations = ({ conversations, onClick }: ListConversationsP
 
     return (
         <>
-            <ListItemButton onClick={() => setOpen(!open)}>
+            <ListItemButton
+                onClick={() => setOpen(!open)}
+                sx={{
+                    transition:
+                        'box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+                }}
+            >
                 <InboxIcon sx={{ marginRight: 1 }} />
                 <ListItemText primary="Conversations" sx={{ fontWeight: 700 }} />
                 {open ? <ExpandLess /> : <ExpandMore />}
