@@ -12,6 +12,7 @@ const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
     height: 34,
     borderRadius: 8,
     width: '100%',
+    transition:'all 200ms linear',
     '> input': {
         cursor: 'pointer',
     },
@@ -49,7 +50,7 @@ export const LeftSidebarRtc = ({ onClickSearch }: any) => {
                     alignItems: 'center',
                     padding: '10px',
                     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-                    height: 65,
+                    height: 64,
                 }}
             >
                 <StyledSearchInput onClick={onClickSearch} placeholder="Search by name" />

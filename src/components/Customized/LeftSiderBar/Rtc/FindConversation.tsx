@@ -12,10 +12,11 @@ const StyledSearchConversationArea = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: '0 16px',
-    height: 60,
     justifyContent: 'space-between',
+    height: 64,
     top: 0,
     flexShrink: 0,
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
 }));
 
 const StyledWrapperButton = styled(Box)(({ theme }) => ({
@@ -26,6 +27,7 @@ const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
     height: 34,
     borderRadius: 8,
     width: '100%',
+    transitions: 'all 0.1s ease-in-out',
 }));
 
 export const FindingConversation = ({ debouncedOnChange, onCloseSearch }: FindingConversationProps) => {
@@ -50,7 +52,15 @@ export const FindingConversation = ({ debouncedOnChange, onCloseSearch }: Findin
                     id="searchByName"
                     placeholder="Search by name"
                     endAdornment={
-                        <IconButton onClick={onCloseSearch}>
+                        <IconButton
+                            onClick={onCloseSearch}
+                            sx={{
+                                width: 24,
+                                height: 24,
+                                color: 'black',
+                                '&:hover': {},
+                            }}
+                        >
                             <CloseIcon />
                         </IconButton>
                     }

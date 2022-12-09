@@ -1,33 +1,39 @@
-import { useAuthentication } from 'hooks';
+import { selectUser } from 'features/slices/sso/authSlice';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getTokenAuth } from 'utils';
+
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useAppSelector } from 'store/hooks';
+import { useAuth } from 'utils';
 
 interface AuthProviderProps {
     children: React.ReactNode;
 }
 
-export const AuthContext = React.createContext<any>({});
+export const AuthContext = React.createContext({});
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-    const token = getTokenAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const { token } = useParams();
 
-    const { isAuth } = useAuthentication();
+    const isAuth = useAuth();
+    const currentUser = useAppSelector(selectUser);
 
     React.useEffect(() => {
-        // eslint-disable-next-line no-constant-condition
-        if (!isAuth) {
-            navigate('/login', { replace: true });
+        if (!isAuth && !currentUser) {
+            if (location.pathname !== '/reset-password' && !token) {
+                navigate('/login', { replace: true });
+            }
+            return;
         } else {
-            navigate('/home', { replace: true });
+            // navigate('/dashboard', { replace: true });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuth]);
 
     const contextValue = React.useMemo(
         () => ({
-            isLogged: !!token,
+            isLogged: !!isAuth,
         }),
         // eslint-disable-next-line react-hooks/exhaustive-deps
         []

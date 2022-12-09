@@ -17,6 +17,14 @@ interface IConversationItemProps {
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
+    overflow: 'hidden',
+
+    // '& .MuiListItemText-secondary': {
+    //     maxWidth: 268,
+    //     whiteSpace: 'nowrap',
+    //     overflow: 'hidden !important',
+    //     textOverflow: 'ellipsis',
+    // },
 }));
 
 const StyledConversationItem = styled(ListItem)(({ theme }) => ({
@@ -66,8 +74,11 @@ export const ConversationItem = ({ currentUser, conversation, handleListItemClic
         lastName,
     });
     const { type = '', content = '' } = lastMessage;
+
     const messDetail = content.indexOf('wrapper') !== -1 ? 'Send a file' : extractContent(content);
+
     const userId = user?._id || '';
+
     const currentUserId = currentUser?.id || '';
 
     return (
@@ -101,7 +112,7 @@ export const ConversationItem = ({ currentUser, conversation, handleListItemClic
                     }
                 />
             </StyledConversationItem>
-            <Divider />
+            <Divider variant="inset" />
         </>
     );
 };

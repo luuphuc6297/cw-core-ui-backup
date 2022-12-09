@@ -33,6 +33,10 @@ const Router = () => {
                     ),
                 },
                 {
+                    path: 'home',
+                    element: <div>Home</div>,
+                },
+                {
                     path: 'rtc',
                     element: <Outlet />,
                     children: [

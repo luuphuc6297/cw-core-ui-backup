@@ -1,8 +1,8 @@
-import { AttributesUser, CurrentUser, LastMessage, ListResponse, Message } from 'models';
 import { Box, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { BoxMessages, DateMessages, TypingChat } from 'components';
 import { chain, isEqual, keys, orderBy } from 'lodash';
+import { AttributesUser, CurrentUser, LastMessage, ListResponse, Message } from 'models';
 import moment from 'moment';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';

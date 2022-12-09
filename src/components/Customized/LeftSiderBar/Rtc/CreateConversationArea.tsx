@@ -13,8 +13,8 @@ interface CreateConversationAreaProps {
 const StyledCreateSearchConversationArea = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
-    padding: '0 16px',
-    height: 60,
+    padding: '0 8px',
+    height: 64,
     justifyContent: 'start',
 }));
 

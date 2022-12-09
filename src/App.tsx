@@ -2,16 +2,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Router from 'app/routes';
-import theme from 'configs/theme';
+import { theme } from 'configs';
+import themeRTL from 'assets/theme/theme-rtl';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'store/store';
 import { AVAILABLE_LANGUAGES } from 'utils';
-import { BrowserRouter } from 'react-router-dom';
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {

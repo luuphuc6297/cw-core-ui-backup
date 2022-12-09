@@ -1,15 +1,17 @@
+import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
-const StyleLastMess = styled('span')(({ theme }) => ({
+const StyleLastMess = styled(Typography)(({ theme }) => ({
     flex: 0,
     fontSize: 13,
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: 1,
-    overflow: 'hidden',
-    wordWrap: 'break-word',
     width: '100%',
-    textOverflow: 'ellipsis',
+    maxWidth: 298,
     display: 'inline-block',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden !important',
+    textOverflow: 'ellipsis',
 }));
 
 export const LastMessage = ({

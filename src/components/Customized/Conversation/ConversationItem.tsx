@@ -1,5 +1,4 @@
 import React from 'react';
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
@@ -15,14 +14,15 @@ import {
     ListItemIcon,
     ListItemSecondaryAction,
     Menu,
-    MenuItem,
+    MenuItem
 } from '@mui/material';
 // import { useConversationStore } from 'app/conversation-store';
 // import { ConversationSlice } from 'app/slices';
 // import { useStore } from 'app/store';
+// import {ListItemText} from '@mui'
+import { get } from 'lodash';
 import { ItemResponse } from 'models';
 import { timeout } from 'utils';
-import { get } from 'lodash';
 import { StyledWrapperAvatar } from '../BoxMessages';
 
 interface IConversationItemProps {
@@ -110,16 +110,9 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         setHidden(value);
     };
 
-    // React.useEffect(() => {
-    //     window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
-    //     return () => {
-    //         window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
-    //     };
-    // });
-
     return (
         <React.Fragment>
-            <ListItem button onClick={(event) => handleListItemClick(conversation._id)}>
+            <ListItem onClick={(event) => handleListItemClick(conversation._id)}>
                 <ListItemAvatar>
                     <StyledWrapperAvatar>
                         {/* <AvatarCustom {...{ firstName, lastName, avatarUrl }} /> */}

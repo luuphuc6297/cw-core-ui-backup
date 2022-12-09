@@ -83,6 +83,7 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
             // Clear previous submission error
             await onSubmit?.(formValues);
             dispatch(authActions.clearError());
+            navigate('/home');
         } catch (error: any) {
             console.log('error', error);
         }

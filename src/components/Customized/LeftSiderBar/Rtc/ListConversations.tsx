@@ -24,10 +24,8 @@ export const ListConversations = ({ conversations, onClick }: ListConversationsP
     return (
         <>
             <ListItemButton onClick={() => setOpen(!open)}>
-                <ListItemIcon>
-                    <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Inbox" />
+                <InboxIcon sx={{ marginRight: 1 }} />
+                <ListItemText primary="Conversations" sx={{ fontWeight: 700 }} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <StyledCollapse in={open} timeout="auto" unmountOnExit>

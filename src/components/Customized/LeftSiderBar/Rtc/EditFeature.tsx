@@ -17,7 +17,14 @@ export const EditFeature = () => {
 
     return (
         <Box>
-            <IconButton onClick={handleClick}>
+            <IconButton
+                sx={{
+                    width: 32,
+                    height: 32,
+                    color: 'black',
+                }}
+                onClick={handleClick}
+            >
                 <BorderColorOutlinedIcon />
             </IconButton>
             <EditMenu anchorEl={anchorEl} open={open} onClose={handleClose} />

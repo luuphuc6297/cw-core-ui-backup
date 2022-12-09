@@ -38,30 +38,24 @@ const StyledTitleChat = styled(Box)(({ theme }) => ({
 }));
 
 export const Chatting = () => {
-
     const { id: conversationId } = useParams();
 
-    const {
-        conversation,
-        getUsersConversation,
-        getConversationDetail,
-    } = useRtcStore((state: ConversationSlice) => state);
-    const { typing } = useRtcStore((state: TypingSlice) => state);
-    const {
-        messages,
-        getDataMessages,
-    } = useRtcStore((state: MessageSlice) => state);
+    const { conversation, getUsersConversation, getConversationDetail } = useRtcStore(
+        (state: ConversationSlice) => state
+    );
 
-    const {
-        user,
-    } = useRtcStore((state: UserSlice | any) => state);
+    const { typing } = useRtcStore((state: TypingSlice) => state);
+
+    const { messages, getDataMessages } = useRtcStore((state: MessageSlice) => state);
+
+    const { user } = useRtcStore((state: UserSlice | any) => state);
+
+    const loadMessages = () => {};
 
     React.useEffect(() => {
         const elmContent: any = document.getElementById(`scrollable-box`);
         if (elmContent) elmContent.scrollTop = elmContent.scrollHeight;
     }, [conversation._id]);
-
-    const loadMessages = () => {};
 
     React.useEffect(() => {
         if (conversationId) {
@@ -69,9 +63,10 @@ export const Chatting = () => {
             getDataMessages(WORKSPACE_ID, conversationId, 1);
             getUsersConversation(WORKSPACE_ID, conversationId);
         }
-    }, [conversationId])
+    }, [conversationId]);
 
     if (!conversation._id) return <></>;
+
     return (
         <StyledMessageContentDetail id={conversation._id}>
             <StyledTitleChat>
@@ -84,12 +79,7 @@ export const Chatting = () => {
                 />
             </StyledTitleChat>
             <MessagesArea>
-                <LoadMoreMessages
-                    messages={messages}
-                    currentUser={user}
-                    typing={typing}
-                    loadMessages={loadMessages}
-                />
+                <LoadMoreMessages messages={messages} currentUser={user} typing={typing} loadMessages={loadMessages} />
             </MessagesArea>
 
             <SenderArea />

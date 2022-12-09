@@ -28,7 +28,7 @@ interface ResponsiveAppBarProps {
     navigate: NavigateFunction;
 }
 
-const StyleLeftToolbar = styled(Box)(({ theme }) => ({
+const StyledLeftToolbar = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -80,10 +80,10 @@ export const ResponsiveAppBar = ({ currentLocation = 'rtc', navigate }: Responsi
     };
 
     return (
-        <Box sx={{ height: 60, flexShrink: 0 }}>
+        <Box sx={{ height: 64, flexShrink: 0 }}>
             <Grid container sx={{ flexWrap: 'nowrap', height: '100%', padding: '0 10px' }}>
                 <Grid item sx={{ margin: 'auto 0' }}>
-                    <StyleLeftToolbar>
+                    <StyledLeftToolbar>
                         <Typography
                             variant="h5"
                             noWrap
@@ -100,7 +100,7 @@ export const ResponsiveAppBar = ({ currentLocation = 'rtc', navigate }: Responsi
                         >
                             Harvard Business School
                         </Typography>
-                    </StyleLeftToolbar>
+                    </StyledLeftToolbar>
                 </Grid>
                 <Grid item xs={10} sx={{ margin: 'auto 0' }}>
                     <Box

@@ -14,7 +14,7 @@ import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
 
 const StyledTitleDetail = styled(Box)(({ theme }) => ({
-    height: 65,
+    height: 64,
     borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
     boxSizing: 'border-box',
     display: 'flex',
