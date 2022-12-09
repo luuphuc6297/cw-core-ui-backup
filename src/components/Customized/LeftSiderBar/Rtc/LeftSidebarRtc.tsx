@@ -1,4 +1,5 @@
-import { List, OutlinedInput } from '@mui/material';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { InputAdornment, List, OutlinedInput } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { Conversation } from 'models';
 import { useNavigate } from 'react-router-dom';
@@ -12,31 +13,29 @@ const StyledSearchInput = styled(OutlinedInput)(({ theme }) => ({
     height: 34,
     borderRadius: 8,
     width: '100%',
-    transition:'all 200ms linear',
+    transition: 'all 200ms linear',
     '> input': {
         cursor: 'pointer',
     },
 }));
 
-export const LeftSidebarRtc = ({ onClickSearch }: any) => {
+const StyledSearchIcon = styled('img')(({ theme }) => ({
+    width: 18,
+    height: 18,
+}));
 
+export const LeftSidebarRtc = ({ onClickSearch }: any) => {
     const navigate = useNavigate();
 
-    const {
-        conversations,
-        createNewConversation,
-        inviteUsers,
-    } = useRtcStore((state: ConversationSlice) => state);
-    const {
-        users,
-    } = useRtcStore((state: WorkSpaceSlice) => state);
+    const { conversations, createNewConversation, inviteUsers } = useRtcStore((state: ConversationSlice) => state);
+    const { users } = useRtcStore((state: WorkSpaceSlice) => state);
 
     const onClick = (conversation: Conversation) => {
         navigate(`/rtc/${conversation._id}`);
     };
 
     const onSubmit = async (formValues: any, onCancel: any) => {
-        const result: Conversation = await createNewConversation(WORKSPACE_ID , formValues);
+        const result: Conversation = await createNewConversation(WORKSPACE_ID, formValues);
         inviteUsers(WORKSPACE_ID, result._id, formValues?.selectedId);
         onCancel();
         navigate(`/rtc/${result._id}`);
@@ -53,7 +52,15 @@ export const LeftSidebarRtc = ({ onClickSearch }: any) => {
                     height: 64,
                 }}
             >
-                <StyledSearchInput onClick={onClickSearch} placeholder="Search by name" />
+                <StyledSearchInput
+                    onClick={onClickSearch}
+                    placeholder="Search by name"
+                    startAdornment={
+                        <InputAdornment position="start">
+                            <SearchOutlinedIcon />
+                        </InputAdornment>
+                    }
+                />
                 <CreateConversationArea onSubmit={onSubmit} users={users} />
             </Box>
             <List sx={{ height: '100%', overflowY: 'auto' }}>
