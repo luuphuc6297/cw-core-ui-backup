@@ -45,9 +45,7 @@ export const SenderArea = () => {
     } = useRtcStore((state: ConversationSlice) => state);
     const {
         messages,
-        getDataMessages,
         createMessage,
-        updatePageNumber,
         deleteMessage,
         updateMessagesFromSocket,
     } = useRtcStore((state: MessageSlice) => state);
@@ -55,18 +53,6 @@ export const SenderArea = () => {
     const pageNumber = messages.meta.skip / messages.meta.limit;
 
     /* handle message */
-    const loadMessages = () => {
-        if (messages.data.length >= 30) {
-            const newPageNumber = pageNumber + 1;
-            const allPromise = Promise.all([
-                getDataMessages(WORKSPACE_ID, conversation._id, newPageNumber),
-                updatePageNumber(conversation._id, newPageNumber),
-            ]);
-            (async () => {
-                await allPromise;
-            })();
-        }
-    };
 
     const sendMessage = (messText: string) => {
         const drafMess: any = JSON.parse(window.localStorage.getItem('draftMessage') || '{}');

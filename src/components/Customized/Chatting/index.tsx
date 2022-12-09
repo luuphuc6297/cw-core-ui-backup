@@ -49,7 +49,11 @@ export const Chatting = () => {
 
     const { user } = useRtcStore((state: UserSlice | any) => state);
 
-    const loadMessages = () => {};
+    const loadMessages = () => {
+        if (conversationId) {
+            getDataMessages(WORKSPACE_ID, conversationId, messages.meta.skip / messages.meta.limit + 2);
+        }
+    };
 
     React.useEffect(() => {
         const elmContent: any = document.getElementById(`scrollable-box`);
@@ -57,7 +61,7 @@ export const Chatting = () => {
     }, [conversation._id]);
 
     React.useEffect(() => {
-        if (conversationId) {
+        if (conversationId && conversationId != conversation._id) {
             getConversationDetail(WORKSPACE_ID, conversationId);
             getDataMessages(WORKSPACE_ID, conversationId, 1);
             getUsersConversation(WORKSPACE_ID, conversationId);

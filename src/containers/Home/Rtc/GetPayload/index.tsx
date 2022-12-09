@@ -1,18 +1,20 @@
 import React from 'react';
-import { useConversationList, useConversationUpdate, useMessageList, useMessageUpdate } from 'services';
+import { useParams } from 'react-router-dom';
+import { useConversationList, useConversationUpdate, useMessageUpdate } from 'services';
 import { useUserList } from 'services/users';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, UserSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { ConversationSlice, MessageSlice, UserSlice, WorkSpaceSlice } from 'store/zustand/slices';
 import { WORKSPACE_ID } from 'utils';
 import { DATA_FAKE } from '../data';
 
 const GetPayload = () => {
+    const { id: conversationId } = useParams();
     const { setConversations } = useRtcStore((state: ConversationSlice) => state);
 
     const { setUsers } = useRtcStore((state: WorkSpaceSlice) => state);
 
     const { storeUser } = useRtcStore((state: UserSlice | any) => state);
-
+    const { clearMessage, getDataMessages } = useRtcStore((state: MessageSlice) => state);
     const { data: conversations } = useConversationList(WORKSPACE_ID, {
         limit: 30,
         count: 0,
@@ -129,6 +131,10 @@ const GetPayload = () => {
 
     React.useEffect(() => {
         storeUser(DATA_FAKE.user);
+        if (conversationId) {
+            clearMessage();
+            getDataMessages(WORKSPACE_ID, conversationId, 1);
+        }
     }, []);
 
     return <React.Fragment />;

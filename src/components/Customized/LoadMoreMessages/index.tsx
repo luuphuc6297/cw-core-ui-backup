@@ -5,7 +5,7 @@ import { chain, isEqual, keys, orderBy } from 'lodash';
 import { AttributesUser, CurrentUser, LastMessage, ListResponse, Message } from 'models';
 import moment from 'moment';
 import React from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface LoadMoreMessagesProps {
     currentUser?: CurrentUser;
@@ -20,6 +20,7 @@ const StyledBoxLoadMore = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column-reverse',
     padding: 16,
+    position: 'relative',
 }));
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
@@ -30,7 +31,7 @@ export const LoadMoreMessages = ({ currentUser, messages, typing, loadMessages }
     const [currentData, setCurrentData] = React.useState<any>([]);
     const [oldData, setOldData] = React.useState<Message[]>([]);
 
-    const [more, setMore] = React.useState<boolean>(false);
+    const [more, setMore] = React.useState<boolean>((messages?.meta.totalPages || 0) > ((messages?.meta.skip || 0) / (messages?.meta.limit || 30) + 1));
 
     const elmContent: any = document.getElementById('scrollable-box');
 
@@ -90,14 +91,15 @@ export const LoadMoreMessages = ({ currentUser, messages, typing, loadMessages }
     };
 
     return (
-        <StyledBoxLoadMore id="scrollable-box">
+        <StyledBoxLoadMore id="scrollableBox">
             <InfiniteScroll
                 dataLength={currentData.length}
-                scrollableTarget="scrollable-box"
+                scrollableTarget="scrollableBox"
                 next={loadMessages}
-                hasMore={currentData.length < 30 ? false : more}
+                inverse={true}
+                hasMore={more}
                 loader={
-                    <Box sx={{ textAlign: 'center' }}>
+                    <Box sx={{ textAlign: 'center', position: 'fixed', top: '200px', left: '65%' }}>
                         <StyledCircularProgress />
                     </Box>
                 }
