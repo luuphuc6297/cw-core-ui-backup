@@ -11,7 +11,7 @@ import {
     getCreatedAtLastMessage,
     getFullName,
     getUserIdFormLastMessage,
-    getUserIdFormMessage
+    getUserIdFormMessage,
 } from 'utils';
 import { AvatarConversation, ServerMessages, TimeDisplayedConversation } from 'components';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -25,10 +25,10 @@ interface BoxMessageProps {
     lastMessage: LastMessage;
 }
 
-const StyledBoxMessage = styled(Box)<{ render?: boolean }>(({ theme, render }) => ({
+const StyledBoxMessage = styled(Box)<{ isCurrentUser?: boolean }>(({ theme, isCurrentUser }) => ({
     display: 'flex',
     marginBottom: 20,
-    flexDirection: render ? 'row-reverse' : 'row',
+    flexDirection: isCurrentUser ? 'row-reverse' : 'row',
     gap: '10px',
 }));
 
@@ -185,7 +185,7 @@ export const BoxMessages = ({ currentUser, message, lastMessage }: BoxMessagePro
                     onMouseOut={(e: any) => {
                         setShowExtension(false);
                     }}
-                    render={isEqual(message?.attributes?.user?._id, currentUser?.id)}
+                    isCurrentUser={isEqual(message?.attributes?.user?._id, currentUser?.id)}
                 >
                     <StyledWrapperAvatar>
                         {showImage && <AvatarConversation user={message.attributes.user} />}

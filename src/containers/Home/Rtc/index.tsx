@@ -1,8 +1,9 @@
-import { Chatting, RightSidebarRtc, RtcLeftSidebar } from 'components';
+import { RightSidebarRtc, RtcLeftSidebar } from 'components';
 import { MainLayout } from 'layouts';
 import { RTCSocketProvider, socketRtc } from 'providers/Home/Rtc/Socket';
 import React from 'react';
 import { getTokenAuth } from 'utils';
+import AreaContentRtc from './AreaContentRtc';
 import GetPayload from './GetPayload';
 
 const RtcContainer = () => {
@@ -16,7 +17,7 @@ const RtcContainer = () => {
         <RTCSocketProvider token={token}>
             <GetPayload />
             <MainLayout rightSidebar={<RightSidebarRtc />} leftSidebar={<RtcLeftSidebar />}>
-                <Chatting />
+                <AreaContentRtc />
             </MainLayout>
         </RTCSocketProvider>
     );

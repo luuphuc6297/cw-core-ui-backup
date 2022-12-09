@@ -13,7 +13,9 @@ const StyledBoxTyping = styled(Box)(({ theme }) => ({
     fontSize: 12,
     fontStyle: 'italic',
     flexDirection: 'row-reverse',
-    paddingRight: 8,
+    right: 10,
+    position: 'absolute',
+    bottom: 10,
     width: '100%',
     '@keyframes blink': {
         '50%': {},
