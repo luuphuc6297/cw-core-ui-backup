@@ -41,6 +41,10 @@ const StyleWrapperTitleConversation = styled(Box)(({ theme }) => ({
     gap: 6,
 }));
 
+const StyleWrapperDividerConversation = styled(Divider)(({ theme }) => ({
+    margin: 0,
+}));
+
 const StyleTitleConversation = styled('span')(({ theme }) => ({
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: 1,
@@ -112,7 +116,7 @@ export const ConversationItem = ({ currentUser, conversation, handleListItemClic
                     }
                 />
             </StyledConversationItem>
-            <Divider variant="inset" />
+            <StyleWrapperDividerConversation variant="inset" />
         </>
     );
 };

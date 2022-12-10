@@ -14,8 +14,8 @@ interface ListConversationsProps {
 }
 
 const StyledCollapse = styled(Collapse)(({ theme }) => ({
-    height: '100% !important',
     overflow: 'auto',
+    maxHeight: 'calc(100% - 48px)',
 }));
 
 export const ListConversations = ({ conversations, onClick }: ListConversationsProps) => {
