@@ -41,9 +41,11 @@ export const LoadMoreMessages = ({ currentUser, messages, typing, loadMessages }
         const count: number | any = messages?.meta?.count;
         if (!isEqual(currentData, oldData)) {
             if (currentData.length - oldData.length === 1) {
-                elmContent.scrollTo({
-                    top: elmContent.scrollHeight - elmContent.clientHeight,
-                });
+                if (elmContent) {
+                    elmContent.scrollTo({
+                        top: elmContent.scrollHeight - elmContent.clientHeight,
+                    });
+                }
             }
             setOldData(currentData);
         } else {
