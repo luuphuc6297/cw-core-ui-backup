@@ -3,29 +3,26 @@ import { useParams } from 'react-router-dom';
 import { useConversationList, useConversationUpdate, useMessageUpdate } from 'services';
 import { useUserList } from 'services/users';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, MessageSlice, UserSlice, WorkSpaceSlice } from 'store/zustand/slices';
-import { WORKSPACE_ID } from 'utils';
-import { DATA_FAKE } from '../data';
+import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
 
 const GetPayload = () => {
     const { id: conversationId } = useParams();
     const { setConversations } = useRtcStore((state: ConversationSlice) => state);
 
-    const { setUsers } = useRtcStore((state: WorkSpaceSlice) => state);
+    const { setUsers, workspace } = useRtcStore((state: WorkSpaceSlice) => state);
 
-    const { storeUser } = useRtcStore((state: UserSlice | any) => state);
     const { clearMessage, getDataMessages } = useRtcStore((state: MessageSlice) => state);
-    const { data: conversations } = useConversationList(WORKSPACE_ID, {
+    const { data: conversations } = useConversationList(workspace.id, {
         limit: 30,
         count: 0,
         totalPages: 1,
         skip: 0,
     });
 
-    const { data: users } = useUserList(WORKSPACE_ID);
+    const { data: users } = useUserList(workspace.id);
 
     // const { messages } = useMessageList(
-    //     WORKSPACE_ID,
+    //     workspace.id,
     //     "9e27a779-b4cc-418c-acb7-03767c941b4c", {
     //     limit: 30,
     //     count: 0,
@@ -33,7 +30,7 @@ const GetPayload = () => {
     //     skip: 0,
     // });
 
-    const { mutate: messageUpdate, ...messageUpdateData } = useMessageUpdate(WORKSPACE_ID, {
+    const { mutate: messageUpdate, ...messageUpdateData } = useMessageUpdate(workspace.id, {
         onSuccess: (data, login) => {
             console.log(data);
         },
@@ -42,7 +39,7 @@ const GetPayload = () => {
         },
     });
 
-    const { mutate: conversationUpdate, ...conversationUpdateData } = useConversationUpdate(WORKSPACE_ID, {
+    const { mutate: conversationUpdate, ...conversationUpdateData } = useConversationUpdate(workspace.id, {
         onSuccess: (data, login) => {
             console.log(data);
         },
@@ -130,10 +127,9 @@ const GetPayload = () => {
     }, [users]);
 
     React.useEffect(() => {
-        storeUser(DATA_FAKE.user);
         if (conversationId) {
             clearMessage();
-            getDataMessages(WORKSPACE_ID, conversationId, 1);
+            getDataMessages(workspace.id, conversationId, 1);
         }
     }, []);
 

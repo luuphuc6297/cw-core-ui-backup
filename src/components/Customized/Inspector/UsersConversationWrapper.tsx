@@ -21,8 +21,7 @@ import { Conversation, CreateConversationForm, ListResponse, WorkspaceUser } fro
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
-import { WORKSPACE_ID } from 'utils';
+import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
 import { InviteUserSchema } from '../CreateConversation/validation';
 import { UsersConversationUI } from './UsersConversationUI';
 interface UserConversationWrapperProps {
@@ -45,6 +44,7 @@ export const UsersConversationWrapper = ({ usersConversation, conversation, user
 
     const userIds = usersConversation.data.map((i) => i._id);
     const initialValues: CreateConversationForm = { title: '' } as CreateConversationForm;
+    const { workspace } = useRtcStore((state: WorkSpaceSlice) => state);
 
     const { getDataMessages } = useRtcStore((state: MessageSlice) => state);
     const { getConversationDetail, inviteUsers, getUsersConversation } = useRtcStore(
@@ -64,10 +64,10 @@ export const UsersConversationWrapper = ({ usersConversation, conversation, user
 
     const onAddMember = (selectedId: string[]) => {
         try {
-            inviteUsers(WORKSPACE_ID, conversation._id, selectedId);
-            getConversationDetail(WORKSPACE_ID, conversation._id);
-            getUsersConversation(WORKSPACE_ID, conversation._id);
-            getDataMessages(WORKSPACE_ID, conversation._id, 1);
+            inviteUsers(workspace.id, conversation._id, selectedId);
+            getConversationDetail(workspace.id, conversation._id);
+            getUsersConversation(workspace.id, conversation._id);
+            getDataMessages(workspace.id, conversation._id, 1);
             return true;
         } catch (e) {
             console.log(e);

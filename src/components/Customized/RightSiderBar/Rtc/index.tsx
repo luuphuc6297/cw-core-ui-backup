@@ -8,7 +8,6 @@ import React from 'react';
 import { useConversationUpdate } from 'services';
 import { useRtcStore } from 'store/zustand/rtcStore';
 import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
-import { WORKSPACE_ID } from 'utils';
 import AvatarUpload from '../../ConversationAvatar';
 import { InspectorOptions, LinksCollection } from '../../Inspector';
 import { UsersConversationWrapper } from '../../Inspector/UsersConversationWrapper';
@@ -45,6 +44,7 @@ export const RightSidebarRtc = () => {
     } = useRtcStore((state: ConversationSlice) => state);
     const {
         users,
+        workspace
     } = useRtcStore((state: WorkSpaceSlice) => state);
     const {
         getDataMessages,
@@ -58,7 +58,7 @@ export const RightSidebarRtc = () => {
 
     const { title: titleChat = '', imagePath: avatarUrl = '' } = get(conversation, 'attributes', {} as any);
 
-    const { mutate: conversationUpdate } = useConversationUpdate(WORKSPACE_ID, {
+    const { mutate: conversationUpdate } = useConversationUpdate(workspace.id, {
         onSuccess: (data, login) => {
           console.log(data);
         },
@@ -74,10 +74,10 @@ export const RightSidebarRtc = () => {
     };
 
     const onAddMember = (selectedId: string[]) => {
-        inviteUsers(WORKSPACE_ID, conversation._id, selectedId);
-        getConversationDetail(WORKSPACE_ID, conversation._id);
-        getUsersConversation(WORKSPACE_ID, conversation._id);
-        getDataMessages(WORKSPACE_ID, conversation._id, 1);
+        inviteUsers(workspace.id, conversation._id, selectedId);
+        getConversationDetail(workspace.id, conversation._id);
+        getUsersConversation(workspace.id, conversation._id);
+        getDataMessages(workspace.id, conversation._id, 1);
         return true;
     };
 

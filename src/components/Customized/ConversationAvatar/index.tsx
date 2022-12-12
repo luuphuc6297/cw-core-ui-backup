@@ -1,6 +1,11 @@
 import { Box, styled } from '@mui/system';
+import { conversationApis } from 'apis/conversationApis';
+import { fileApis } from 'apis/fileApis';
+import axios from 'axios';
 import { values } from 'lodash';
 import { useRef } from 'react';
+import { useRtcStore } from 'store/zustand/rtcStore';
+import { ConversationSlice, WorkSpaceSlice } from 'store/zustand/slices';
 import { CustomizedAvatar } from '../CustomizedAvatar';
 
 interface ConversationAvatarProps {
@@ -32,6 +37,14 @@ export const StyledWrapperAvatar = styled(Box)(({ theme }) => ({
     },
 }));
 
+const convertFileToBinary = (file: any) => {
+    return new Promise((resolve) => {
+        const reader: any = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onload = () => resolve(Buffer.from(reader.result));
+    });
+}
+
 const AvatarUpload = ({
     avatarUrl,
     firstName,
@@ -39,15 +52,34 @@ const AvatarUpload = ({
 }: ConversationAvatarProps) => {
     const elUploadImage = useRef<any>();
 
+    const { conversation, updateDataConversationDetailFromSocket } = useRtcStore((state: ConversationSlice) => state);
+
+    const { workspace } = useRtcStore((state: WorkSpaceSlice) => state);
+    
     const handleUpdateAvt = () => {
         elUploadImage.current.click();
     };
 
-    const handleUploadAvt = (e: any) => {
-        const files = values(e.target.files);
-        const fileUpload = files[0];
-        const formData = new FormData();
-        formData.append('file', fileUpload);
+    const handleUploadAvt = async (e: any) => {
+        try {
+            const files = values(e.target.files);
+            const fileUpload = files[0];
+            const formData = new FormData();
+            formData.append('file', fileUpload);
+            const datPresignedUrl = await fileApis.generatePresignedUrlSSO(fileUpload.name);
+            const {
+                attributes: {
+                    presignedUrl,
+                    originalUrl,
+                }
+            } = datPresignedUrl;
+            const result: any = await conversationApis.updateConversation(workspace.id, conversation._id, { imagePath: originalUrl });
+            updateDataConversationDetailFromSocket(conversation._id, result);
+            const binary = await convertFileToBinary(fileUpload);
+            await axios.put(presignedUrl, binary);
+        } catch(e) {
+            console.log(e);
+        }
     };
 
     return (

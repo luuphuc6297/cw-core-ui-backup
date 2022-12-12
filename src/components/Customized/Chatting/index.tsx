@@ -4,8 +4,8 @@ import { ConversationsTitle, LoadMoreMessages, MessagesArea, SenderArea } from '
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, MessageSlice, TypingSlice, UserSlice } from 'store/zustand/slices';
-import { formatDistance, WORKSPACE_ID } from 'utils';
+import { ConversationSlice, MessageSlice, TypingSlice, UserSlice, WorkSpaceSlice } from 'store/zustand/slices';
+import { formatDistance } from 'utils';
 
 // interface ChattingProps {
 //     messages?: ListResponse;
@@ -38,7 +38,7 @@ const StyledTitleChat = styled(Box)(({ theme }) => ({
 
 export const Chatting = () => {
     const { id: conversationId } = useParams();
-
+    const { workspace } = useRtcStore((state: WorkSpaceSlice) => state);
     const { conversation, getUsersConversation, getConversationDetail } = useRtcStore(
         (state: ConversationSlice) => state
     );
@@ -51,7 +51,7 @@ export const Chatting = () => {
 
     const loadMessages = () => {
         if (conversationId) {
-            getDataMessages(WORKSPACE_ID, conversationId, messages.meta.skip / messages.meta.limit + 2);
+            getDataMessages(workspace.id, conversationId, messages.meta.skip / messages.meta.limit + 2);
         }
     };
 
@@ -62,9 +62,9 @@ export const Chatting = () => {
 
     React.useEffect(() => {
         if (conversationId && conversationId != conversation._id) {
-            getConversationDetail(WORKSPACE_ID, conversationId);
-            getDataMessages(WORKSPACE_ID, conversationId, 1);
-            getUsersConversation(WORKSPACE_ID, conversationId);
+            getConversationDetail(workspace.id, conversationId);
+            getDataMessages(workspace.id, conversationId, 1);
+            getUsersConversation(workspace.id, conversationId);
         }
     }, [conversationId]);
 

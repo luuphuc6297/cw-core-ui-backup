@@ -6,9 +6,9 @@ import { debounce, get, trim } from 'lodash';
 import { Conversation } from 'models';
 import React from 'react';
 import { useRtcStore } from 'store/zustand/rtcStore';
-import { ConversationSlice, MessageSlice } from 'store/zustand/slices';
+import { ConversationSlice, MessageSlice, WorkSpaceSlice } from 'store/zustand/slices';
 
-import { CLIENT_EVENT, WORKSPACE_ID } from 'utils';
+import { CLIENT_EVENT } from 'utils';
 import { TinyMCE } from '../TinyMCE';
 
 // interface SenderAreaProps {
@@ -39,7 +39,7 @@ export const SenderArea = () => {
     const [valueEditor, setValueEditor] = React.useState<string>('');
     const [isStarting, setIsStarting] = React.useState<boolean>(false);
     const [idMess, setIdMess] = React.useState<string>('');
-    
+    const { workspace } = useRtcStore((state: WorkSpaceSlice) => state);
     const {
         conversation,
     } = useRtcStore((state: ConversationSlice) => state);
@@ -58,11 +58,11 @@ export const SenderArea = () => {
         const drafMess: any = JSON.parse(window.localStorage.getItem('draftMessage') || '{}');
         delete drafMess[conversation._id];
         window.localStorage.setItem('draftMessage', JSON.stringify(drafMess));
-        createMessage(WORKSPACE_ID, conversation._id, trim(messText));
+        createMessage(workspace.id, conversation._id, trim(messText));
     };
 
     const execute = async (value: string, conversation: Conversation) => {
-        messageApis.stopTyping(WORKSPACE_ID, conversation._id).then();
+        messageApis.stopTyping(workspace.id, conversation._id).then();
         const drafMess: any = JSON.parse(window.localStorage.getItem('draftMessage') || '{}');
         drafMess[conversation._id] = value;
         window.localStorage.setItem('draftMessage', JSON.stringify(drafMess));
@@ -78,7 +78,7 @@ export const SenderArea = () => {
         setCountLengthValue(content.length);
         if (!isStarting) {
             setIsStarting(true);
-            messageApis.startTyping(WORKSPACE_ID, conversation._id).then();
+            messageApis.startTyping(workspace.id, conversation._id).then();
         }
         handler(content, conversation);
         editor.selection.select(editor.getBody(), true);
@@ -127,7 +127,7 @@ export const SenderArea = () => {
 
     const onDeleteMessage = (data: any) => {
         const { _id } = data.detail;
-        deleteMessage(WORKSPACE_ID, _id);
+        deleteMessage(workspace.id, _id);
     };
 
     const onCancelEditMessage = () => {
@@ -139,7 +139,7 @@ export const SenderArea = () => {
 
     const onSaveEditMessage = async (id?: string, content?: string) => {
         const newId = typeof id == 'string' ? id : idMess;
-        const message: any = await messageApis.updateMessage(WORKSPACE_ID, newId, content || valueEditor);
+        const message: any = await messageApis.updateMessage(workspace.id, newId, content || valueEditor);
         await updateMessagesFromSocket(message);
         setValueEditor('');
         setIdMess('');
