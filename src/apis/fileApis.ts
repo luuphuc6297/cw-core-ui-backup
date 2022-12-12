@@ -57,7 +57,7 @@ export const fileApis = {
         return axiosRTC.post(url, { fileName });
     },
     generatePresignedUrlSSO: (fileName: string): Promise<any> => {
-        const url = `/api/users/me/presigned-url`;
+        const url = `/users/me/presigned-url`;
         return axiosSSO.post(url, { fileName });
     }
 };
