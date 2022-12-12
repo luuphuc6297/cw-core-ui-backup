@@ -25,10 +25,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 navigate('/login', { replace: true });
             }
             return;
-        } else {
-            // navigate('/dashboard', { replace: true });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuth]);
 
     const contextValue = React.useMemo(

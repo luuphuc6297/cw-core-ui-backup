@@ -8,6 +8,7 @@ const RegisterContainer = React.lazy(() => import('containers/Sso/Register'));
 /**
  * Dashboard routes
  */
+const HomeContainer = React.lazy(() => import('containers/Home/Home'));
 const RtcContainer = React.lazy(() => import('containers/Home/Rtc'));
 
 const Router = () => {
@@ -34,7 +35,11 @@ const Router = () => {
                 },
                 {
                     path: 'home',
-                    element: <div>Home</div>,
+                    element: (
+                        <React.Suspense fallback={<CircularIndeterminate />}>
+                            <HomeContainer />
+                        </React.Suspense>
+                    ),
                 },
                 {
                     path: 'rtc',

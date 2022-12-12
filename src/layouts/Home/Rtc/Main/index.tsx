@@ -22,7 +22,6 @@ export const MainLayout = ({ children, leftSidebar, rightSidebar }: MainLayoutPr
     const isShow = useMediaQuery(theme.breakpoints.down('sm'));
     const [value, setValue] = React.useState(0);
     const [isShowRightSidebar, setIsShowRightSidebar] = React.useState(false);
-    const navigate = useNavigate();
 
     const handleToggleRightSideBar = React.useCallback(() => {
         setIsShowRightSidebar((preState) => !preState);
@@ -35,7 +34,7 @@ export const MainLayout = ({ children, leftSidebar, rightSidebar }: MainLayoutPr
     return (
         <MainLayoutContext.Provider value={mainLayoutContext}>
             <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-                <ResponsiveAppBar navigate={navigate} />
+                <ResponsiveAppBar />
                 <Divider light />
                 <Box sx={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
                     <Box

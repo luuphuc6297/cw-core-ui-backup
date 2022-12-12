@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/system';
 import * as React from 'react';
-import { NavigateFunction } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -25,7 +25,6 @@ interface INavigationItem {
 
 interface ResponsiveAppBarProps {
     currentLocation?: string;
-    navigate: NavigateFunction;
 }
 
 const StyledLeftToolbar = styled(Box)(({ theme }) => ({
@@ -52,9 +51,9 @@ const navigationItems: INavigationItem[] = [
     { id: 'conversations', name: 'Conversation', icon: ChatBubbleOutlineIcon, path: '/rtc' },
 ];
 
-export const ResponsiveAppBar = ({ currentLocation = 'rtc', navigate }: ResponsiveAppBarProps) => {
+export const ResponsiveAppBar = ({ currentLocation = 'home' }: ResponsiveAppBarProps) => {
+    const navigate = useNavigate();
     // const { user }: any = useStore();
-
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     // const location = useLocation();
 
