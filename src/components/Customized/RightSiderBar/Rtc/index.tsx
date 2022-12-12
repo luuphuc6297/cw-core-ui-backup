@@ -3,7 +3,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Box, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { MainLayoutContext } from 'layouts';
-import { get } from 'lodash';
+import _, { get } from 'lodash';
 import React from 'react';
 import { useConversationUpdate } from 'services';
 import { useRtcStore } from 'store/zustand/rtcStore';
@@ -111,7 +111,10 @@ export const RightSidebarRtc = () => {
             <UsersConversationWrapper
                 conversation={conversation}
                 usersConversation={usersConversation}
-                users={users}
+                users={{
+                    ...users,
+                    data: users.data.filter(user => !_.map(usersConversation.data, '_id').includes(user._id))
+                }}
                 onAddMember={onAddMember}
             />
             <Divider />
