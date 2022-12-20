@@ -5,7 +5,17 @@ import {
     createUserSlice,
     createWorkSpaceSlice, MessageSlice,
     TypingSlice,
-    WorkSpaceSlice
+    WorkSpaceSlice,
+    CommentSlice,
+    CommunitySlice,
+    PostsSlice,
+    ReactionSlice,
+    UsersDiscussionSlice,
+    createCommentSlice,
+    createCommunitySlice,
+    createPostsSlice,
+    createReactionsSlice,
+    createUsersDiscussionSlice
 } from './slices';
 
 import create, { StateCreator, StoreMutatorIdentifier } from 'zustand';
@@ -43,7 +53,7 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
 
 export const logger = loggerImpl as unknown as Logger;
 
-export const useRtcStore = create<ConversationSlice & MessageSlice & TypingSlice & WorkSpaceSlice>()(
+export const useRtcStore = create<ConversationSlice & MessageSlice & TypingSlice & WorkSpaceSlice & CommentSlice & CommunitySlice & PostsSlice & ReactionSlice & UsersDiscussionSlice>()(
     logger(
         devtools(
             persist(
@@ -58,7 +68,18 @@ export const useRtcStore = create<ConversationSlice & MessageSlice & TypingSlice
                         //@ts-ignore
                         ...createMessageSlice(...a),
                         //@ts-ignore
+                        ...createCommentSlice(...a),
+                        //@ts-ignore
+                        ...createCommunitySlice(...a),
+                        //@ts-ignore
+                        ...createPostsSlice(...a),
+                        //@ts-ignore
+                        ...createReactionsSlice(...a),
+                        //@ts-ignore
+                        ...createUsersDiscussionSlice(...a),
+                        //@ts-ignore
                         ...createTypingSlice(...a),
+
                     };
                 },
                 { name: 'rtc-store', getStorage: () => sessionStorage }

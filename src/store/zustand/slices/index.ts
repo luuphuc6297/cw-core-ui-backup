@@ -3,5 +3,8 @@ export * from './messages';
 export * from './typing';
 export * from './user';
 export * from './workspace';
-
-
+export * from './discussion/comment';
+export * from './discussion/community';
+export * from './discussion/posts';
+export * from './discussion/reactions';
+export * from './discussion/users';
