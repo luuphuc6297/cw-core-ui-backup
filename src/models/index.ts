@@ -8,3 +8,4 @@ export * from './slices';
 export * from './socket';
 export * from './user';
 export * from './workspace';
+export * from './comment';

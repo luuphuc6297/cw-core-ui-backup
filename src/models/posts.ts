@@ -1,6 +1,6 @@
 import { Meta } from './common';
 
-export interface Owner {
+interface Owner {
     _id: string;
     email: string;
     createdAt: string;
