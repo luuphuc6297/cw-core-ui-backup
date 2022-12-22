@@ -1,28 +1,29 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { communityApis } from 'apis/communityApis';
+import { userDiscussionApis } from 'apis/userDiscussionApis';
 import { AxiosError } from 'axios';
 import { ListResponse, MetaParams } from 'models';
 
-const communityKey = {
-    all: () => ['communityServices'] as const,
-    communities: (params: MetaParams) => [communityKey.all(), 'communities', params] as const,
-    community: (workspaceId: string) =>
-        [communityKey.all(), 'community', { workspaceId }] as const,
+const userDiscussionKey = {
+    all: () => ['userDiscussionServices'] as const,
+    userDiscussions: (params: MetaParams) => [userDiscussionKey.all(), 'userDiscussions', params] as const,
+    userDiscussion: (workspaceId: string, communityId: string) =>
+        [userDiscussionKey.all(), 'userDiscussion', { workspaceId, communityId }] as const,
 };
 
-export const useCommunityList = (
+export const useReactionList = (
     workspaceId: string,
+    communityId: string,
     params: MetaParams,
     config: UseQueryOptions<
         ListResponse,
         AxiosError,
         ListResponse,
-        InferQueryKey<typeof communityKey.communities>
+        InferQueryKey<typeof userDiscussionKey.userDiscussions>
     > = {}
 ) => {
     const result = useQuery(
-        communityKey.communities(params),
-        () => communityApis.getCommunities(workspaceId),
+        userDiscussionKey.userDiscussions(params),
+        () => userDiscussionApis.getUsersDiscussion(workspaceId, communityId),
         {
             keepPreviousData: true,
             ...config,
@@ -38,9 +39,10 @@ export const useCommunityList = (
     const isLoadingPage = result.isFetching;
 
     return {
-        communities: data,
+        userDiscussions: data,
         hasMore,
         isLoadingPage,
         ...result,
     };
 };
+

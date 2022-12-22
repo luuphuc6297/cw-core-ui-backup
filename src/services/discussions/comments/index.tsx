@@ -12,7 +12,7 @@ const commentKey = {
     all: () => ['commentServices'] as const,
     comments: (params: MetaParams) => [commentKey.all(), 'comments', params] as const,
     comment: (workspaceId: string, postId: string) =>
-        [commentKey.all(), 'community', { workspaceId, postId }] as const,
+        [commentKey.all(), 'comment', { workspaceId, postId }] as const,
 };
 
 export const useCommentList = (
@@ -62,7 +62,7 @@ export const useCommentCreate = (
     return useMutation((payload) => commentsApis.createComment(payload.workspaceId, payload.postId, payload.content), {
         ...config,
         onSuccess: (...args) => {
-            queryClient.invalidateQueries([...commentKey.all(), 'users']);
+            queryClient.invalidateQueries([...commentKey.all(), 'comments']);
             config?.onSuccess?.(...args);
         },
       }
